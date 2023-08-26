@@ -8,7 +8,9 @@
         "*.astro",
         "*.ts",
         "*.js",
-        "*.html"
+        "*.html",
+        "*.css",
+        "*.scss"
       ]
     }
   ],
