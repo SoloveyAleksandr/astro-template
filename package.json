@@ -10,13 +10,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.10.14",
-    "gsap": "^3.12.2",
-    "scss-reset": "^1.4.2"
+    "astro": "^2.10.14"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "cssnano": "^6.0.1",
     "prettier": "^3.0.2",
     "prettier-plugin-astro": "^0.12.0",
-    "sass": "^1.66.1"
-  }
+    "sass": "^1.66.1",
+    "scss-reset": "^1.4.2"
+  },
+  "browserslist": [
+    "> 0.2%",
+    "last 2 versions",
+    "Firefox ESR",
+    "IE 10",
+    "not dead"
+  ]
 }

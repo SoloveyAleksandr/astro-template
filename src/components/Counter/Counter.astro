@@ -1,0 +1,26 @@
+---
+import "./Counter.scss";
+---
+
+<section class="counter">
+  <div class="counter__spinner">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <counter-element>
+    <div class="counter__container">
+      <span class="counter__count">0</span>
+      <div class="counter__inner">
+        <button type="button" class="counter__btn counter__btn_dec">-</button>
+        <button type="button" class="counter__btn counter__btn_inc">+</button>
+      </div>
+    </div>
+  </counter-element>
+</section>
+
+<script src="./Counter.ts"></script>

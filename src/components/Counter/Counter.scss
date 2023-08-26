@@ -1,0 +1,74 @@
+@import "../../assets/styles/mixins";
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  &__spinner {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      position: absolute;
+      top: 0;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: rgba(0, 150, 209, 1);
+      transform-origin: 50% 5rem;
+
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transform: rotate(40deg + ($i * -15deg));
+          animation: spinAnim_#{$i} 3s ease-in-out $i * 0.2s infinite;
+
+          @keyframes spinAnim_#{$i} {
+            from {
+              transform: rotate(40deg + ($i * -15deg));
+            }
+            to {
+              transform: rotate((40deg + ($i * -15deg)) + 360deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__count {
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgb(44, 49, 51);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__btn {
+    width: 4rem;
+    height: 4rem;
+    border: 0.2rem solid rgb(44, 49, 51);
+    font-size: 2rem;
+    transition: 0.3s;
+
+    @include hover {
+      background-color: rgba(44, 49, 51, 0.2);
+    }
+  }
+}
