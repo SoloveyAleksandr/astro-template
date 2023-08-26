@@ -1,0 +1,61 @@
+---
+import BlockTitle from "../BlockTitle/BlockTitle.astro";
+import DefaultLink from "../DefaultLink/DefaultLink.astro";
+
+import "./News.scss";
+---
+
+<section class="news">
+  <div class="container news__container">
+    <div class="news__head">
+      <BlockTitle>что нового?</BlockTitle>
+      <DefaultLink props={{ href: "#" }}>Все события</DefaultLink>
+    </div>
+
+    <div class="news__inner">
+      <div class="news-img">
+        <div class="news-img__img">
+          <img src="./images/news.jpg" alt="image" />
+        </div>
+        <a href="#" class="news-info news-img__info">
+          <span class="news-info__date">27.03.2023</span>
+          <h5 class="news-info__title">новинка от cresco — какао ноблесс!</h5>
+          <p class="news-info__text">
+            в продажу поступила смесь для мороженого и кондитерских изделий
+            «Какао Ноблесс»
+          </p>
+        </a>
+      </div>
+
+      <ul class="news-list">
+        <a href="#" class="news-info news-list__item">
+          <span class="news-info__date">27.03.2023</span>
+          <h5 class="news-info__title">новинка от cresco — какао ноблесс!</h5>
+          <p class="news-info__text">
+            в продажу поступила смесь для мороженого и кондитерских изделий
+            «Какао Ноблесс»
+          </p>
+        </a>
+        <a href="#" class="news-info news-list__item">
+          <span class="news-info__date">19.08.2021</span>
+          <h5 class="news-info__title">
+            в продаже перфорированные формы для расстойки хлеба
+          </h5>
+          <p class="news-info__text">
+            В продажу поступили перфорированные формы для расстойки хлеба
+            с текстильными вставками EVO торговой марки Technopek,
+            Словакия / Чехия
+          </p>
+        </a>
+        <a href="#" class="news-info news-list__item">
+          <span class="news-info__date">16.04.2020</span>
+          <h5 class="news-info__title">распродажа складских остатков</h5>
+          <p class="news-info__text">
+            Устраиваем распродажу складских остатков бумажных форм для выпечки,
+            ажурных подложек, салфеток
+          </p>
+        </a>
+      </ul>
+    </div>
+  </div>
+</section>

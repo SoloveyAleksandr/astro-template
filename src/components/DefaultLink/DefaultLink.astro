@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props {
+  class?: string;
+  props?: HTMLAttributes<"a">;
+}
+
+const { class: classList, props } = Astro.props;
+---
+
+<a class:list={["default-link", classList]} {...props}><slot /></a>
+
+<style lang="scss" is:global>
+  @import "../../assets/styles/_vars.scss";
+  @import "../../assets/styles/_mixins.scss";
+
+  .default-link {
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 120%; /* 2.4rem */
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    transition: 0.3s;
+
+    @include hover {
+      color: $orange;
+    }
+  }
+</style>

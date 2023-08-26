@@ -1,0 +1,53 @@
+@import "../../assets/styles/_vars.scss";
+@import "../../assets/styles/_mixins.scss";
+
+.footer {
+  margin-top: auto;
+  background-color: $brown-1;
+  padding: 4rem 0rem;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 6rem;
+    row-gap: 2rem;
+
+    &__link {
+      width: fit-content;
+      font-size: 1.8rem;
+      color: $white;
+      transition: 0.3s;
+
+      @include hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &-legal {
+    padding-top: 2rem;
+    border-top: 0.1rem solid $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__link {
+      font-size: 1.4rem;
+      color: $white;
+      opacity: 0.5;
+      transition: 0.3s;
+
+      &:is(a) {
+        @include hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
