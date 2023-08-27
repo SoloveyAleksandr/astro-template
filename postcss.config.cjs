@@ -1,6 +1,13 @@
-module.exports = {
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+const postcssPresetEnv = require("postcss-preset-env");
+
+const config = {
   plugins: [
-    require("autoprefixer"),
-    require("cssnano")({ preset: "advanced" }),
+    autoprefixer(),
+    postcssPresetEnv({ stage: 1 }),
+    cssnano({ preset: "default" }),
   ],
 };
+
+module.exports = config;
