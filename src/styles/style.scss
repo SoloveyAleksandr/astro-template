@@ -1,4 +1,5 @@
 @import "scss-reset/reset";
+@import "normalize-scss";
 @import "./vars";
 @import "./mixins";
 
@@ -10,20 +11,20 @@ html {
     font-size: calc(100vw / 1920 * 10);
   }
 
-  @include breakpoint($xm-bp) {
-    font-size: calc(100vw / 1024 * 10);
-  }
+  // @include breakpoint($xm-bp) {
+  //   font-size: calc(100vw / 1024 * 10);
+  // }
 
-  @include breakpoint($xs-bp) {
-    font-size: calc(100vw / 375 * 10);
-  }
+  // @include breakpoint($xs-bp) {
+  //   font-size: calc(100vw / 375 * 10);
+  // }
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   line-height: normal;
-  color: $brown-1;
+  color: $black;
 }
 
 *,
