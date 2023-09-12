@@ -1,4 +1,5 @@
 ---
+import { Sprite } from "astro-icon";
 import "./Counter.scss";
 ---
 
@@ -16,8 +17,16 @@ import "./Counter.scss";
     <div class="counter__container">
       <span class="counter__count">0</span>
       <div class="counter__inner">
-        <button type="button" class="counter__btn counter__btn_dec">-</button>
-        <button type="button" class="counter__btn counter__btn_inc">+</button>
+        <button type="button" class="counter__btn counter__btn_dec">
+          <Sprite.Provider>
+            <Sprite name="icons8:minus" />
+          </Sprite.Provider>
+        </button>
+        <button type="button" class="counter__btn counter__btn_inc">
+          <Sprite.Provider>
+            <Sprite name="icons8:plus" />
+          </Sprite.Provider>
+        </button>
       </div>
     </div>
   </counter-element>
