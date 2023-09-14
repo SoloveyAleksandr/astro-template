@@ -23,9 +23,10 @@ const { title = "заголовок страницы" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Sprite.Provider />
-    <div class="page">
-      <slot />
-    </div>
+    <Sprite.Provider>
+      <div class="page">
+        <slot />
+      </div>
+    </Sprite.Provider>
   </body>
 </html>

@@ -9,9 +9,6 @@ export default defineConfig({
     assets: "assets",
     assetsPrefix: "./",
   },
-  experimental: {
-    assets: true,
-  },
   image: {
     service: sharpImageService(),
   },
