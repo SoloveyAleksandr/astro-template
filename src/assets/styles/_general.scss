@@ -1,0 +1,21 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.container {
+  max-width: 114rem;
+  width: 100%;
+  margin: 0 auto;
+
+  @include breakpoint($xl-bp) {
+    max-width: 100%;
+    padding: 0rem 8rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    padding: 0rem 1.5rem;
+  }
+}

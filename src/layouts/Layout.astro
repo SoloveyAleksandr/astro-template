@@ -1,6 +1,6 @@
 ---
 import { Sprite } from "astro-icon";
-import "../styles/style.scss";
+import "../assets/styles/style.scss";
 
 interface Props {
   title?: string;
@@ -30,3 +30,5 @@ const { title = "заголовок страницы" } = Astro.props;
     </Sprite.Provider>
   </body>
 </html>
+
+<script src="../assets/scripts/index.ts"></script>
