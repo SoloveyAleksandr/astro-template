@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Counter from "@components/Counter/Counter.astro";
+import img from "../assets/img/calculator.png";
 ---
 
 <Layout title="Главная страница">
@@ -9,5 +11,19 @@ import Counter from "@components/Counter/Counter.astro";
   >
     <h1>Astro start template</h1>
     <Counter />
+    <Image src={img} alt={""} />
+
+    <div class="bg-img"></div>
   </div>
 </Layout>
+
+<style lang="scss">
+  .bg-img {
+    width: 20rem;
+    height: 20rem;
+    background-image: url("../img/calculator.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
