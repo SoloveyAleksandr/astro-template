@@ -20,11 +20,13 @@ build:
   artifacts:
     paths:
       - dist/
+  only:
+    - main
 
 sftp_deploy:
   stage: sftp_deploy
   rules:
-    - if: $HOST_TYPE == "SFTP"
+    - if: $HOST_TYPE == "SFTP" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: on_success
       allow_failure: true
   script:
@@ -34,7 +36,7 @@ sftp_deploy:
 ftp_deploy:
   stage: ftp_deploy
   rules:
-    - if: $HOST_TYPE == "FTP"
+    - if: $HOST_TYPE == "FTP" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: on_success
       allow_failure: true
   script:
