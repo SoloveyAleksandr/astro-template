@@ -1,0 +1,23 @@
+image: node:latest
+
+before_script:
+  - apt-get update && apt-get install -y lftp
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+deploy:
+  stage: deploy
+  script:
+    - lftp -e "set sftp:auto-confirm yes; mirror --reverse --verbose dist/ $SFTP_DEST" -u $SFTP_USERNAME,$SFTP_PASSWORD sftp://$SFTP_HOST || true
+  allow_failure: true
