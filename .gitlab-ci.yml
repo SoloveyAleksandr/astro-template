@@ -7,6 +7,11 @@ cache:
   paths:
     - node_modules/
 
+stages:
+  - build
+  - sftp_deploy
+  - ftp_deploy
+
 build:
   stage: build
   script:
@@ -16,8 +21,22 @@ build:
     paths:
       - dist/
 
-deploy:
-  stage: deploy
+sftp_deploy:
+  stage: sftp_deploy
+  rules:
+    - if: $HOST_TYPE == "SFTP"
+      when: on_success
+      allow_failure: true
   script:
-    - lftp -e "set sftp:auto-confirm yes; mirror --reverse --verbose dist/ $SFTP_DEST" -u $SFTP_USERNAME,$SFTP_PASSWORD sftp://$SFTP_HOST || true
+    - lftp -e "set sftp:auto-confirm yes; mirror --reverse --verbose dist/ $HOST_DEST" -u $USERNAME,$PASSWORD sftp://$HOST || true
+  allow_failure: true
+
+ftp_deploy:
+  stage: ftp_deploy
+  rules:
+    - if: $HOST_TYPE == "FTP"
+      when: on_success
+      allow_failure: true
+  script:
+    - lftp -c "open -u $USERNAME,$PASSWORD $HOST; mirror -R dist/ $HOST_DEST" || true
   allow_failure: true
