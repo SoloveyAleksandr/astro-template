@@ -35,17 +35,17 @@ export class Dropdown {
     this.dropped = false;
 
     // блок с data-dropdown-btn станет кнопкой
-    this.btn = this.container.querySelector<HTMLElement>("[data-dropdown-btn]");
+    this.btn = this.container.querySelector<HTMLElement>("[data-btn]");
 
     if (this.btn) {
       this.btn.addEventListener("click", this.dropStateHandler.bind(this));
     }
 
     // data-dropdown-close на контейнере будет закрыть при клике вне контейнера
-    if (this.container.hasAttribute("data-dropdown-close")) {
+    if (this.container.hasAttribute("data-close")) {
       document.addEventListener("click", (e) => {
         const closestEl = (e.target as HTMLElement).closest(
-          "[data-dropdown-close]",
+          "[data-close]",
         );
 
         if (!closestEl || closestEl !== this.container) {
@@ -123,12 +123,12 @@ export class Select extends Dropdown {
   constructor(container: HTMLElement) {
     super(container);
     this.btnText =
-      this.container.querySelector<HTMLElement>(".select-btn__text");
-    this.items = this.container.querySelectorAll<HTMLElement>(".select-item");
+      this.container.querySelector<HTMLElement>("[data-btn-text]");
+    this.items = this.container.querySelectorAll<HTMLElement>("[data-item]");
 
     this.items.forEach((i) => {
-      const input = i.querySelector<HTMLInputElement>(".select-item__input");
-      const text = i.querySelector<HTMLSpanElement>(".select-item__text");
+      const input = i.querySelector<HTMLInputElement>("[data-input]");
+      const text = i.querySelector<HTMLSpanElement>("[data-text]");
 
       if (input && text) {
         input.addEventListener("change", () => {
