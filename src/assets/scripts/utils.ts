@@ -44,9 +44,7 @@ export class Dropdown {
     // data-dropdown-close на контейнере будет закрыть при клике вне контейнера
     if (this.container.hasAttribute("data-close")) {
       document.addEventListener("click", (e) => {
-        const closestEl = (e.target as HTMLElement).closest(
-          "[data-close]",
-        );
+        const closestEl = (e.target as HTMLElement).closest("[data-close]");
 
         if (!closestEl || closestEl !== this.container) {
           this.close();
@@ -122,8 +120,7 @@ export class Select extends Dropdown {
 
   constructor(container: HTMLElement) {
     super(container);
-    this.btnText =
-      this.container.querySelector<HTMLElement>("[data-btn-text]");
+    this.btnText = this.container.querySelector<HTMLElement>("[data-btn-text]");
     this.items = this.container.querySelectorAll<HTMLElement>("[data-item]");
 
     this.items.forEach((i) => {
@@ -149,5 +146,162 @@ export class Select extends Dropdown {
       this.btnText.textContent = text;
       this.container.classList.remove("placeholder");
     }
+  }
+}
+
+export class Tooltip {
+  trigger: HTMLElement;
+  container: HTMLElement | null;
+  static: boolean;
+
+  constructor(trigger: HTMLElement) {
+    this.trigger = trigger;
+    this.container = this.trigger.querySelector<HTMLElement>(
+      "[data-tooltip-container]",
+    );
+
+    this.static = this.trigger.hasAttribute("data-static");
+
+    if (this.trigger && this.container) {
+      this.trigger.addEventListener("mouseenter", this.show.bind(this));
+      this.trigger.addEventListener("mouseleave", this.hide.bind(this));
+    }
+  }
+
+  show(e: MouseEvent) {
+    if (this.container) {
+      this.updateSize(e);
+      this.container.classList.add("_active");
+    }
+  }
+
+  hide() {
+    if (this.container) {
+      this.container.classList.remove("_active");
+    }
+  }
+
+  resetSize() {
+    if (this.container) {
+      this.container.style.removeProperty("right");
+      this.container.style.removeProperty("width");
+    }
+  }
+
+  updateSize(e: MouseEvent) {
+    if (this.container && !this.static) {
+      let pos = this.container.getBoundingClientRect();
+
+      this.container.style.setProperty("top", e.clientY - pos.height + "px");
+      this.container.style.setProperty(
+        "left",
+        e.clientX - pos.width + 10 + "px",
+      );
+
+      pos = this.container.getBoundingClientRect();
+
+      if (pos.left < 0) {
+        this.container.style.setProperty("left", 5 + "px");
+      }
+
+      if (pos.width > window.innerWidth) {
+        this.container.style.setProperty(
+          "width",
+          window.innerWidth - 10 + "px",
+        );
+      }
+    }
+  }
+}
+
+export class Toast {
+  container: HTMLDivElement;
+  list: HTMLDivElement;
+  template: HTMLTemplateElement;
+
+  constructor() {
+    this.container = document.createElement("div");
+    this.list = document.createElement("div");
+    this.template = document.createElement("template");
+
+    this.init();
+  }
+
+  private init() {
+    this.container.className = "toast";
+
+    this.template.innerHTML = `
+      <div class="toast-item">
+        <div class="toast-item__wrapper">
+          <div class="toast-item__container">
+            <div class="toast-item__inner">
+              <span class="toast-item__title" data-title></span>
+              <span class="toast-item__text" data-text></span>
+            </div>
+            <button type="button" class="toast-item__btn" data-btn>
+              <svg astro-icon="menu-close">
+                  <use xlink:href="#astroicon:menu-close"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(this.container);
+
+    (window as any).toast = this;
+  }
+
+  new(props: {
+    title: string;
+    text: string;
+    color?: "red" | "greed";
+    duration?: number;
+    closeable?: boolean;
+  }) {
+    const toast = this.template.content.children[0].cloneNode(true);
+
+    const title = (toast as HTMLElement).querySelector<HTMLElement>(
+      "[data-title]",
+    );
+    const text = (toast as HTMLElement).querySelector<HTMLElement>(
+      "[data-text]",
+    );
+    const btn = (toast as HTMLElement).querySelector<HTMLButtonElement>(
+      "[data-btn]",
+    );
+
+    if (title && text && btn) {
+      title.textContent = props.title;
+      text.textContent = props.text;
+      btn.addEventListener(
+        "click",
+        this.close.bind(this, toast as HTMLElement),
+      );
+
+      if (props.color) {
+        (toast as HTMLElement).classList.add(props.color);
+      }
+
+      if (props.duration) {
+        setTimeout(this.close.bind(this, toast as HTMLElement), props.duration);
+      }
+
+      if (props.closeable === false) {
+        btn.remove();
+      }
+
+      this.container.appendChild(toast);
+      (toast as HTMLElement).classList.add("toast-in");
+    }
+  }
+
+  private close(item: HTMLElement) {
+    item.addEventListener("animationend", () => {
+      item.remove();
+    });
+
+    item.classList.add("toast-out");
   }
 }

@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "astro": "^3.5.4",
-    "inputmask": "^5.0.8"
+    "inputmask": "^5.0.8",
+    "venobox": "^2.1.4"
   },
   "devDependencies": {
     "@types/inputmask": "^5.0.6",
