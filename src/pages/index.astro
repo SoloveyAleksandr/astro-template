@@ -1,29 +1,11 @@
 ---
-import { Image } from "astro:assets";
+import PopupLogin from "@modules/Popup/PopupLogin.astro";
 import Layout from "../layouts/Layout.astro";
-import Counter from "@components/Counter/Counter.astro";
-import img from "../assets/img/calculator.png";
 ---
 
 <Layout title="Главная страница">
   <div
     style="display: flex; flex-direction: column; align-items: flex-start; gap: 5rem; padding: 5rem;"
   >
-    <h1>Astro start template</h1>
-    <Counter />
-    <Image src={img} alt={""} />
-
-    <div class="bg-img"></div>
   </div>
 </Layout>
-
-<style lang="scss">
-  .bg-img {
-    width: 20rem;
-    height: 20rem;
-    background-image: url("../img/calculator.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-</style>

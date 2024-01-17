@@ -1,0 +1,154 @@
+.text-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+
+  &.valid {
+    .text-input {
+      &__field {
+        border-color: $Status-Success;
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.invalid {
+    .text-input {
+      &__field {
+        border-color: $Status-Alert;
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.disabled {
+    .text-input {
+      &__label {
+        color: $Gray-500;
+      }
+
+      &__field {
+        &:disabled {
+          border-color: $Gray-400;
+          color: $Gray-400;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &[data-password] {
+    .text-input {
+      &__field {
+        padding-right: 5.5rem;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__field {
+    width: 100%;
+    padding: 1.1rem 1.5rem;
+    border: 0.1rem solid $Gray-400;
+    border-radius: 100rem;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    transition: 0.3s;
+
+    @include hover {
+      background-color: $BG-Base;
+      border-color: $BG-Base;
+    }
+
+    &:focus {
+      border-color: $Primary-Light;
+      background-color: transparent;
+    }
+
+    &:active {
+      border-color: $Primary-Base;
+      background-color: transparent;
+    }
+
+    &::placeholder {
+      color: $Gray-500;
+    }
+
+    &:is(textarea) {
+      height: 10.4rem;
+      resize: none;
+      border-radius: 1.6rem;
+    }
+  }
+
+  &__message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    &.red {
+      color: $Status-Alert;
+    }
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      flex: none;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    width: 2.4rem;
+    height: 2.4rem;
+    bottom: 1.1rem;
+    right: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $Gray-500;
+    @include hover {
+      color: $Base-Black;
+    }
+
+    &.show {
+      svg {
+        &:nth-child(1) {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        &:nth-child(2) {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: 0.3s;
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+  }
+}

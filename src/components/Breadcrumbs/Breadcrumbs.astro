@@ -1,0 +1,25 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="breadcrumbs">
+  <div class="container breadcrumbs__container">
+    {
+      items.map((el, i) => {
+        if (i === items.length - 1) {
+          return <span class="breadcrumbs__link">{el}</span>;
+        } else {
+          return (
+            <a href="#" class="breadcrumbs__link">
+              {el}
+            </a>
+          );
+        }
+      })
+    }
+  </div>
+</div>

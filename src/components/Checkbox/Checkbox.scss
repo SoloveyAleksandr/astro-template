@@ -1,0 +1,52 @@
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  user-select: none;
+  cursor: pointer;
+
+  &.invalid {
+    .checkbox {
+      &__icon {
+        border-color: $Status-Alert;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &:checked + .checkbox__icon {
+      border-color: $Primary-Base;
+      background-color: $Primary-Base;
+      color: $white;
+    }
+  }
+
+  &__icon {
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.3rem;
+    margin-top: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid $Gray-500;
+    color: transparent;
+    transition: 0.3s;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+---
+import TextInput from "@components/TextInput/TextInput.astro";
+import Popup from "./Popup.astro";
+import DefaultBtn from "@components/DefaultBtn/DefaultBtn.astro";
+import Checkbox from "@components/Checkbox/Checkbox.astro";
+import FileInput from "@components/FileInput/FileInput.astro";
+---
+
+<Popup className="popup-vacancy" popupKey="vacancy">
+  <div class="popup__head">
+    <h4 class="popup__title">Откликнуться на вакансию</h4>
+    <span class="popup__text"
+      >Оставьте заявку и мы свяжемся с вами в ближайшее время</span
+    >
+  </div>
+  <form action="#" class="popup-form" data-action="form-submit">
+    <div class="popup-form__inner">
+      <TextInput
+        type="text"
+        required
+        className="fv"
+        data-action="required-text"
+        placeholder="Константинопольский Контантин Константинович"
+        label="*ФИО"
+      />
+      <TextInput
+        type="text"
+        required
+        className="fv"
+        data-action="required-text"
+        placeholder="+375 99 999 99 99"
+        label="*Телефон"
+        data-mask-init
+        data-mask="+375 (99) 999-99-99"
+      />
+      <TextInput
+        type="text"
+        placeholder="Расскажите о себе"
+        label="Дополнительная информация"
+        textarea
+      />
+
+      <FileInput />
+
+      <Checkbox className="fv" data-action="required-checkbox" required>
+        Я даю согласие на передачу анкеты содержащей мои персональные данные, и
+        согласен с тем, что они обрабатываются, хранятся и используются в
+        соответствии со ст. 5 Закона Республики Беларусь от 07.05.2021 №99-З «О
+        защите персональных данных».
+      </Checkbox>
+    </div>
+
+    <DefaultBtn type="submit">Отправить заявку</DefaultBtn>
+  </form>
+</Popup>

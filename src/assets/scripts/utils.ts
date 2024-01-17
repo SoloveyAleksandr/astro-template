@@ -1,3 +1,5 @@
+import VenoBox from "venobox/dist/venobox";
+
 export class DropdownController {
   slots: {
     [key: string]: Dropdown[];
@@ -23,7 +25,7 @@ const dropdownController = new DropdownController();
 export class Dropdown {
   container: HTMLElement;
   dropped: boolean;
-  btn: any;
+  btn: HTMLElement | null;
   controller: DropdownController;
   controllerID: string | null;
   // scrollTo: boolean;
@@ -58,7 +60,7 @@ export class Dropdown {
     }
 
     // data-controller-id={id для группы} при открытии закрывает остальные
-    this.controllerID = this.container.getAttribute("data-controller-id");
+    this.controllerID = this.container.getAttribute("data-group");
     if (this.controllerID !== null) {
       if (this.controller.slots[this.controllerID]) {
         this.controller.slots[this.controllerID].push(this);
@@ -117,35 +119,54 @@ export class Dropdown {
 export class Select extends Dropdown {
   items: NodeListOf<HTMLElement>;
   btnText: HTMLElement | null;
+  input: HTMLInputElement | null;
+  inputEvent: Event;
 
   constructor(container: HTMLElement) {
     super(container);
     this.btnText = this.container.querySelector<HTMLElement>("[data-btn-text]");
+    this.input = this.container.querySelector<HTMLInputElement>("[data-input]");
     this.items = this.container.querySelectorAll<HTMLElement>("[data-item]");
 
-    this.items.forEach((i) => {
-      const input = i.querySelector<HTMLInputElement>("[data-input]");
-      const text = i.querySelector<HTMLSpanElement>("[data-text]");
+    this.inputEvent = new Event("change");
 
-      if (input && text) {
-        input.addEventListener("change", () => {
-          this.inputHandler(text.innerHTML);
+    this.container.classList.add("placeholder");
+
+    this.items.forEach((item) => {
+      const text =
+        item.querySelector<HTMLSpanElement>("[data-text]")?.textContent;
+      const value = item.getAttribute("data-value");
+
+      if (text && value) {
+        item.addEventListener("click", () => {
+          this.selectHandler(item, text, value);
           this.close();
         });
+      }
 
-        if (input.checked) {
-          this.inputHandler(text.innerHTML);
-          this.container.classList.remove("placeholder");
-        }
+      if (item.classList.contains("checked") && text && value) {
+        this.selectHandler(item, text, value);
       }
     });
   }
 
-  inputHandler(text: string) {
-    if (this.btnText) {
-      this.btnText.textContent = text;
-      this.container.classList.remove("placeholder");
-    }
+  selectHandler(item: HTMLElement, text: string, value: string) {
+    this.items.forEach((el) => {
+      if (el === item) {
+        el.classList.add("selected");
+
+        if (this.btnText && this.input) {
+          this.input.value = value;
+          this.btnText.textContent = text;
+          this.container.classList.remove("placeholder");
+
+          this.input.dispatchEvent(this.inputEvent);
+          // this.input.addEventListener("change")
+        }
+      } else {
+        el.classList.remove("selected");
+      }
+    });
   }
 }
 
@@ -305,3 +326,124 @@ export class Toast {
     item.classList.add("toast-out");
   }
 }
+
+export class Popup {
+  container: HTMLElement;
+  key: string;
+  controller: PopupController;
+
+  constructor(
+    container: HTMLElement,
+    key: string,
+    controller: PopupController,
+  ) {
+    this.container = container;
+    this.key = key;
+    this.controller = controller;
+
+    const closeBtns =
+      this.container.querySelectorAll<HTMLElement>("[data-close-popup]");
+    closeBtns.forEach((item) => {
+      item.addEventListener("click", () => this.controller.close(this.key));
+    });
+  }
+
+  open() {
+    this.container.classList.add("_open");
+  }
+
+  close() {
+    this.container.classList.remove("_open");
+  }
+}
+
+export class PopupController {
+  readonly popupMap: {
+    [key: string]: Popup;
+  };
+  private currentOpen: null | Popup;
+
+  constructor() {
+    this.popupMap = {};
+    this.currentOpen = null;
+
+    const popupList = document.querySelectorAll<HTMLElement>("[data-popup]");
+    popupList.forEach((container) => {
+      const key = container.getAttribute("data-popup");
+
+      if (key) {
+        this.popupMap[key] = new Popup(container, key, this);
+      }
+    });
+
+    const openBtns =
+      document.querySelectorAll<HTMLElement>("[data-open-popup]");
+
+    openBtns.forEach((btn) => {
+      const key = btn.getAttribute("data-open-popup");
+
+      key && btn.addEventListener("click", this.open.bind(this, key));
+    });
+  }
+
+  open(key: string) {
+    this.currentOpen && this.currentOpen.close();
+
+    if (this.popupMap[key]) {
+      document.body.classList.add("_hidden");
+      this.popupMap[key].open();
+      this.currentOpen = this.popupMap[key];
+    } else {
+      throw new Error(
+        "Проверьте правильность ключа и/или наличие popup на странице",
+      );
+    }
+  }
+
+  close(key: string) {
+    document.body.classList.remove("_hidden");
+    this.popupMap[key] && this.popupMap[key].close();
+    this.currentOpen && this.currentOpen.close();
+    this.currentOpen = null;
+  }
+}
+
+export const initVBox = () => {
+  const vboxOptions = {
+    // selector: "[data-venobox]",
+    overlayColor: "#15151580",
+    bgcolor: null,
+    // maxWidth: "1045px",
+
+    // is called after new content loaded
+    onContentLoaded: (newcontent: Element): void => {
+      // formValidateInit(".vbox-content .fv");
+    },
+  };
+
+  let vBox = new VenoBox(vboxOptions);
+
+  (window as any).vBox = vBox;
+
+  document.addEventListener("click", (e) => {
+    const dataAction = "data-action";
+    const eTarget = (e.target as HTMLElement).closest(`[${dataAction}]`);
+    const activeClass = "_active";
+
+    const vBoxLink = (e.target as HTMLElement).closest("[data-venobox]");
+    if (vBoxLink) {
+      const href = vBoxLink.getAttribute("href");
+
+      if (href) {
+        e.preventDefault();
+        if (!(vBoxLink as any).settings) {
+          (vBoxLink as any).settings = vBox.settings;
+        }
+        vBox.close();
+        setTimeout(() => {
+          vBox.open(vBoxLink);
+        }, 300);
+      }
+    }
+  });
+};

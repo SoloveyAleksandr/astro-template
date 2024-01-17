@@ -1,0 +1,54 @@
+---
+import { Sprite } from "astro-icon";
+
+interface Props extends astroHTML.JSX.InputHTMLAttributes {
+  dataset?: { [key: string]: string };
+  label?: string;
+  className?: string;
+  password?: boolean;
+  message?: boolean;
+  textarea?: boolean;
+  required?: boolean;
+}
+
+const { label, className, password, required, message, textarea, ...rest } =
+  Astro.props;
+---
+
+<label
+  class:list={["text-input", { message: message }, className]}
+  {...{ "data-password": password }}
+>
+  {label && <span class="text-input__label">{label}</span>}
+  {
+    textarea ? (
+      <textarea class="text-input__field" {...rest} />
+    ) : (
+      <input
+        type={rest.type ? rest.type : "text"}
+        class="text-input__field"
+        {...{ required: required, "data-action='required-text'": required }}
+        {...rest}
+      />
+    )
+  }
+
+  {
+    password && (
+      <button type="button" class="text-input__btn">
+        <Sprite name="eye" />
+        <Sprite name="eye-slash" />
+      </button>
+    )
+  }
+  {
+    message && (
+      <slot>
+        <span class="text-input__message red">
+          <Sprite name="error-warning" />
+          Error text
+        </span>
+      </slot>
+    )
+  }
+</label>

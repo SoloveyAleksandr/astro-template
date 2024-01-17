@@ -1,0 +1,69 @@
+.default-btn {
+  padding: 1.5rem 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  border-radius: 10rem;
+  background-color: var(--Primary-Base, #0c5dff);
+  background-color: var(--Primary-Base, #0c5dff);
+  border: 0.1rem solid var(--Primary-Base, #0c5dff);
+  color: var(--Base-White, #fff);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  transition: 0.3s;
+  @include hover {
+    background-color: var(--Primary-Dark, #0a4acc);
+    border-color: var(--Primary-Dark, #0a4acc);
+  }
+
+  @include breakpoint($sm-bp) {
+    padding: 1.1rem 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+
+    @include breakpoint($sm-bp) {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+
+  &.sm {
+    padding: 1.1rem 1.5rem;
+  }
+
+  &.white {
+    background-color: var(--Base-White, #fff);
+    border-color: var(--Base-White, #fff);
+    color: var(--Primary-Base, #0c5dff);
+
+    @include hover {
+      color: var(--Primary-Dark, #0a4acc);
+    }
+  }
+
+  &.stroke {
+    background-color: transparent;
+    color: var(--Primary-Base, #0c5dff);
+
+    @include hover {
+      color: var(--Primary-Dark, #0a4acc);
+    }
+
+    &.white {
+      color: var(--Base-White, #fff);
+
+      @include hover {
+        background: var(--Primary-Tint, #e6eeff);
+        border-color: var(--Primary-Tint, #e6eeff);
+        color: var(--Primary-Dark, #0a4acc);
+      }
+    }
+  }
+}

@@ -18,7 +18,7 @@ export const formValidateInit = (wrapperSelector: string) => {
   const inputPasswordAction = "input-password";
   const numInset = "num-inset";
   const formSubmit = "form-submit";
-  const sendHandler = "[data-send-handler]";
+  const submitMessage = "submit-message";
 
   const inputMaskInit = (node: HTMLInputElement) => {
     const nodeMask = node.dataset.mask || "";
@@ -221,8 +221,9 @@ export const formValidateInit = (wrapperSelector: string) => {
 
   document.addEventListener("click", (e) => {
     const eTarget = (e.target as HTMLElement).closest(`[${DATA_ACTION}]`);
+    const submit = (e.target as HTMLElement).closest("[type='submit']");
 
-    if (eTarget) {
+    if (eTarget && submit) {
       const actions = eTarget.getAttribute(DATA_ACTION);
       const targetNode = e.target as HTMLElement;
 
@@ -258,13 +259,12 @@ export const formValidateInit = (wrapperSelector: string) => {
                 });
 
                 if (!vlaidList.includes(false)) {
-                  const sendHandlerContainer =
-                    closestForm.closest<HTMLElement>(sendHandler);
-
-                  if (sendHandlerContainer) {
-                    closestForm.onsubmit = (e) => e.preventDefault();
-                    sendHandlerContainer.classList.add("_sended");
-                  }
+                  // const sendHandlerContainer =
+                  //   closestForm.closest<HTMLElement>(sendHandler);
+                  // if (sendHandlerContainer) {
+                  //   closestForm.onsubmit = (e) => e.preventDefault();
+                  //   sendHandlerContainer.classList.add("_sended");
+                  // }
                 }
               }
             }

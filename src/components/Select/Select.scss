@@ -1,0 +1,190 @@
+.select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+
+  &._dropped {
+    .select__container {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &.placeholder {
+    .select__btn {
+      color: $Gray-500;
+    }
+  }
+
+  &.valid {
+    .select {
+      &__btn {
+        border-color: $Status-Success;
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.invalid {
+    .select {
+      &__btn {
+        border-color: $Status-Alert;
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.disabled {
+    .text-input {
+      &__label {
+        color: $Gray-500;
+      }
+
+      &__btn {
+        &:disabled {
+          border-color: $Gray-400;
+          color: $Gray-400;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 1.1rem 1.5rem;
+    border: 0.1rem solid $Gray-400;
+    border-radius: 100rem;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @include hover {
+      background-color: $BG-Base;
+      border-color: $BG-Base;
+    }
+
+    &:focus {
+      border-color: $Primary-Light;
+      background-color: transparent;
+    }
+
+    &:active {
+      border-color: $Primary-Base;
+      background-color: transparent;
+    }
+
+    &::placeholder {
+      color: $Gray-400;
+    }
+
+    &:is(textarea) {
+      height: 10.4rem;
+      resize: none;
+      border-radius: 1.6rem;
+    }
+
+    &-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-icon {
+      flex: none;
+      width: 2rem;
+      height: 2rem;
+      color: $Gray-500;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__container {
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    border-radius: 0.8rem;
+    border: 0.1rem solid $Primary-Tint;
+    padding: 0.4rem 0rem;
+    background: $white;
+    width: 100%;
+    max-height: 32rem;
+    overflow: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2.2rem 1rem 1.4rem;
+    transition: 0.3s;
+    cursor: pointer;
+    @include hover {
+      background-color: $Grey-Light;
+    }
+
+    &.checked {
+      .select-item__icon {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &__text {
+      font-size: 1.6rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
+    &__icon {
+      flex: none;
+      width: 2rem;
+      height: 2rem;
+      color: $Primary-Base;
+      transition: 0.3s;
+      opacity: 0;
+      transform: scale(0);
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
