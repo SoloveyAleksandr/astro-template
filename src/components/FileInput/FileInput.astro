@@ -1,0 +1,38 @@
+---
+import { Sprite } from "astro-icon";
+---
+
+<div class="file-input">
+  <label class="file-input__btn">
+    <input type="file" />
+    <Sprite name="paperclip" />
+     Прикрепить файл
+  </label>
+  <template id="file-input-doc">
+    <div class="file-input-doc">
+      <Sprite name="file" className="file-input-doc__icon" />
+      <div class="file-input-doc__info">
+        <span class="file-input-doc__name" data-name></span>
+        <span class="file-input-doc__type" data-type></span>
+      </div>
+      <button type="button" class="file-input-doc__btn" data-btn>
+        <Sprite name="menu-close" />
+      </button>
+    </div>
+  </template>
+
+  <div class="file-input__list">
+    <div class="file-input-doc">
+      <Sprite name="file" className="file-input-doc__icon" />
+      <div class="file-input-doc__info">
+        <span class="file-input-doc__name" data-name
+          >Название документа всегда в 1 строчку asdasd asd asd asasd asd a</span
+        >
+        <span class="file-input-doc__type" data-type>pdf</span>
+      </div>
+      <button type="button" class="file-input-doc__btn" data-btn>
+        <Sprite name="menu-close" />
+      </button>
+    </div>
+  </div>
+</div>

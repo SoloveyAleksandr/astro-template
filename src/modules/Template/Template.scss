@@ -1,0 +1,107 @@
+.template {
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+
+    li {
+      &::marker {
+        color: $Primary-Base;
+      }
+      // padding-left: 2em;
+      // position: relative;
+
+      // &::before {
+      //   content: "";
+      //   width: 1rem;
+      //   border-bottom: 0.1rem solid $Base-Black;
+      //   position: absolute;
+      //   top: 1rem;
+      //   left: 0.6rem;
+      // }
+    }
+  }
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    list-style-type: decimal;
+    list-style-position: inside;
+
+    @include breakpoint($sm-bp) {
+      gap: 0.8rem;
+    }
+  }
+
+  img {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 100%;
+    border-radius: 4rem;
+    object-fit: contain;
+    object-position: center;
+
+    @include breakpoint($sm-bp) {
+      border-radius: 1.6rem;
+    }
+  }
+
+  a {
+    color: $Primary-Base;
+    text-decoration: underline;
+    transition: 0.3s;
+    @include hover {
+      color: $Primary-Dark;
+    }
+  }
+
+  &__table {
+    width: fit-content;
+    max-width: 100%;
+    overflow: auto;
+    @include scroll;
+
+    table {
+      width: fit-content;
+      min-width: 78.6rem;
+    }
+
+    th,
+    td {
+      text-align: left;
+    }
+
+    th {
+      padding: 0.8rem 1.6rem;
+      color: $Primary-Base;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 2.25rem 1.6rem;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
+    tr {
+      &:nth-child(2n + 1) {
+        background-color: $BG-Base;
+      }
+    }
+  }
+}

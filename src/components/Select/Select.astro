@@ -1,0 +1,59 @@
+---
+import { Sprite } from "astro-icon";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  label?: string;
+  className?: string;
+  placeholder?: string;
+  required?: boolean;
+  name: string;
+  items?: {
+    title: string;
+    value: string;
+    checked?: boolean;
+  }[];
+}
+
+const { label, className, items, name, placeholder, required, ...rest } =
+  Astro.props;
+---
+
+<div class:list={["select", className]} data-select data-close {...rest}>
+  <input
+    data-input
+    type="text"
+    class="select__input"
+    {...{
+      "data-action='required-text'": required,
+      required: required,
+    }}
+  />
+  {label && <span class="select__label">{label}</span>}
+  <button type="button" class="select__btn" data-btn>
+    <span class="select__btn-text" data-btn-text>
+      {placeholder}
+    </span>
+    <span class="select__btn-icon">
+      <Sprite name="chevron-down" />
+    </span>
+  </button>
+
+  <div class="select__container">
+    {
+      items?.map((item) => (
+        <div
+          class:list={["select-item", { checked: item.checked }]}
+          data-item
+          data-value={item.value}
+        >
+          <span data-text class="select-item__text">
+            {item.title}
+          </span>
+          <span class="select-item__icon">
+            <Sprite name="check" />
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>

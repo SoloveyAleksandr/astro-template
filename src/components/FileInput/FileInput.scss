@@ -1,0 +1,94 @@
+.file-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.4rem 0rem;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: $Primary-Base;
+    cursor: pointer;
+    transition: 0.3s;
+    @include hover {
+      color: $Primary-Dark;
+    }
+
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      flex: none;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &-doc {
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 1.6rem;
+    background-color: $Gray-100;
+    border-radius: 1.6rem;
+
+    &__icon {
+      flex: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      color: $Primary-Base;
+    }
+
+    &__btn {
+      flex: none;
+      margin-left: auto;
+      width: 1.6rem;
+      height: 1.6rem;
+      color: $Gray-500;
+      transition: 0.3s;
+      @include hover {
+        color: $Base-Black;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__info {
+      flex: 1;
+      max-width: 35rem;
+      display: flex;
+      align-items: baseline;
+      font-size: 1.6rem;
+      overflow: hidden;
+    }
+
+    &__name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__type {
+      flex: none;
+    }
+  }
+}

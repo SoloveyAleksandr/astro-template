@@ -1,0 +1,29 @@
+---
+import { Sprite } from "astro-icon";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  popupKey: string;
+  className?: string;
+  dataset?: { [key: string]: string };
+  close?: boolean;
+}
+
+const { className, popupKey, dataset, close = true } = Astro.props;
+---
+
+<div class:list={["popup", className]} data-popup={popupKey} {...dataset}>
+  <div class="popup__bg" data-close-popup></div>
+  <div class="popup__wrapper">
+    <div class="popup__container">
+      {
+        close && (
+          <button type="button" class="popup__close" data-close-popup>
+            <Sprite name="menu-close" />
+          </button>
+        )
+      }
+
+      <slot />
+    </div>
+  </div>
+</div>
