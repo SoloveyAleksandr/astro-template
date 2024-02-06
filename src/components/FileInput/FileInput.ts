@@ -64,16 +64,18 @@ class FileInputController {
 
   inputHandler() {
     if (this.input.files) {
+      const dt = new DataTransfer();
+
       for (let i = 0; i < this.input.files.length; i++) {
         const file = this.input.files[i];
         this.files.push(file);
       }
 
-      this.input.files = null;
-      this.input.value = "";
+      this.files.forEach((file) => {
+        dt.items.add(file);
+      });
 
-      // (this.fileArea as any).files = this.files;
-      (this.input as any).fileList = this.files;
+      this.input.files = dt.files;
     }
 
     this.render();
@@ -102,8 +104,14 @@ class FileInputController {
   // }
 
   removeFile(file: File) {
+    const dt = new DataTransfer();
     this.files = this.files.filter((i) => i !== file);
-    (this.input as any).fileList = this.files;
+
+    this.files.forEach((file) => {
+      dt.items.add(file);
+    });
+    this.input.files = dt.files;
+
     this.render();
   }
 
