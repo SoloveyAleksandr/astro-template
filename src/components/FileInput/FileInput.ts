@@ -4,6 +4,9 @@ class FileInputController {
   list: HTMLElement;
   fileTemplate: HTMLTemplateElement;
   files: File[];
+  isRemove: boolean;
+  event: Event;
+  isMultiple: boolean;
 
   constructor(
     input: HTMLInputElement,
@@ -17,11 +20,15 @@ class FileInputController {
     this.fileTemplate = fileTemplate;
 
     this.files = [];
+    this.isRemove = false;
+    this.isMultiple = this.input.multiple;
 
     // (this.fileArea as any).files = this.files;
     (this.input as any).fileList = this.files;
 
     this.input.addEventListener("change", this.inputHandler.bind(this));
+
+    this.event = new Event("change", { bubbles: true });
 
     // this.fileArea.addEventListener(
     //   "dragenter",
@@ -64,20 +71,40 @@ class FileInputController {
 
   inputHandler() {
     if (this.input.files) {
-      const dt = new DataTransfer();
+      if (this.isRemove) {
+        this.files = [];
+        const dt = new DataTransfer();
 
-      for (let i = 0; i < this.input.files.length; i++) {
-        const file = this.input.files[i];
-        this.files.push(file);
+        for (let i = 0; i < this.input.files.length; i++) {
+          const file = this.input.files[i];
+          this.files.push(file);
+        }
+
+        this.files.forEach((file) => {
+          dt.items.add(file);
+        });
+
+        this.input.files = dt.files;
+      } else {
+        if (!this.isMultiple) {
+          this.files = [];
+        }
+        const dt = new DataTransfer();
+
+        for (let i = 0; i < this.input.files.length; i++) {
+          const file = this.input.files[i];
+          this.files.push(file);
+        }
+
+        this.files.forEach((file) => {
+          dt.items.add(file);
+        });
+
+        this.input.files = dt.files;
       }
-
-      this.files.forEach((file) => {
-        dt.items.add(file);
-      });
-
-      this.input.files = dt.files;
     }
 
+    this.isRemove = false;
     this.render();
   }
 
@@ -112,7 +139,10 @@ class FileInputController {
     });
     this.input.files = dt.files;
 
-    this.render();
+    this.isRemove = true;
+
+    this.input.dispatchEvent(this.event);
+    // this.render();
   }
 
   render() {
@@ -127,16 +157,22 @@ class FileInputController {
         "[data-btn]",
       );
 
-      if (name && type && btn) {
-        const fileNameArr = file.name.split(".");
+      const fileNameArr = file.name.split(".");
+      if (name) {
         name.textContent = fileNameArr
           .splice(0, fileNameArr.length - 1)
           .join(".");
-        type.textContent = "." + fileNameArr[fileNameArr.length - 1];
-        btn.addEventListener("click", () => this.removeFile.call(this, file));
-
-        fragment.appendChild(newNode);
       }
+
+      if (type) {
+        type.textContent = "." + fileNameArr[fileNameArr.length - 1];
+      }
+
+      if (btn) {
+        btn.addEventListener("click", () => this.removeFile.call(this, file));
+      }
+
+      fragment.appendChild(newNode);
     });
 
     this.list.innerHTML = "";

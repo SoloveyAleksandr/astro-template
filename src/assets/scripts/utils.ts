@@ -119,54 +119,48 @@ export class Dropdown {
 export class Select extends Dropdown {
   items: NodeListOf<HTMLElement>;
   btnText: HTMLElement | null;
-  input: HTMLInputElement | null;
-  inputEvent: Event;
 
   constructor(container: HTMLElement) {
     super(container);
     this.btnText = this.container.querySelector<HTMLElement>("[data-btn-text]");
-    this.input = this.container.querySelector<HTMLInputElement>("[data-input]");
     this.items = this.container.querySelectorAll<HTMLElement>("[data-item]");
 
-    this.inputEvent = new Event("change");
-
-    this.container.classList.add("placeholder");
+    this.btn && this.btn.classList.add("placeholder");
 
     this.items.forEach((item) => {
-      const text =
-        item.querySelector<HTMLSpanElement>("[data-text]")?.textContent;
-      const value = item.getAttribute("data-value");
+      const input = item.querySelector<HTMLInputElement>("input[type='radio']");
+      const text = item.querySelector<HTMLElement>("[data-text]");
 
-      if (text && value) {
-        item.addEventListener("click", () => {
-          this.selectHandler(item, text, value);
-          this.close();
-        });
-      }
+      if (input && text) {
+        input.addEventListener(
+          "change",
+          this.selectHandler.bind(this, item, text.textContent),
+        );
 
-      if (item.classList.contains("checked") && text && value) {
-        this.selectHandler(item, text, value);
+        if (input.checked) {
+          item.classList.add("selected");
+          if (this.btn && this.btnText) {
+            this.btnText.textContent = text.textContent;
+            this.btn.classList.remove("placeholder");
+          }
+        }
       }
     });
   }
 
-  selectHandler(item: HTMLElement, text: string, value: string) {
+  selectHandler(item: HTMLElement | null, text: string | null) {
     this.items.forEach((el) => {
       if (el === item) {
         el.classList.add("selected");
-
-        if (this.btnText && this.input) {
-          this.input.value = value;
+        if (this.btn && this.btnText && text) {
           this.btnText.textContent = text;
-          this.container.classList.remove("placeholder");
-
-          this.input.dispatchEvent(this.inputEvent);
-          // this.input.addEventListener("change")
+          this.btn.classList.remove("placeholder");
         }
       } else {
         el.classList.remove("selected");
       }
     });
+    this.close();
   }
 }
 
@@ -446,4 +440,25 @@ export const initVBox = () => {
       }
     }
   });
+};
+
+export const initSelectInputs = (wrapperSelector?: string) => {
+  const list = document.querySelectorAll<HTMLElement>(
+    `${wrapperSelector || ""} [data-select]`,
+  );
+  list.forEach((container) => new Select(container));
+};
+
+export const initDropdownItems = (wrapperSelector?: string) => {
+  const list = document.querySelectorAll<HTMLElement>(
+    `${wrapperSelector || ""} [data-dropdown]`,
+  );
+  list.forEach((container) => new Dropdown(container));
+};
+
+export const initTooltipItems = (wrapperSelector?: string) => {
+  const list = document.querySelectorAll<HTMLElement>(
+    `${wrapperSelector || ""} [data-tooltip]`,
+  );
+  list.forEach((container) => new Tooltip(container));
 };
