@@ -1,0 +1,30 @@
+---
+import { Sprite } from "astro-icon";
+---
+
+<header class="header">
+  <div class="container header__container">
+    <a href="#" class="header__logo">
+      <picture>
+        <source media="(max-width: 600px)" srcset="./img/logo-mob.svg" />
+        <img src="./img/logo.svg" alt="" />
+      </picture>
+    </a>
+
+    <nav class="header-menu">
+      <div class="header-menu__list">
+        <a href="#" class="header-menu__link">О нас</a>
+        <a href="#" class="header-menu__link">Объекты</a>
+        <a href="#" class="header-menu__link">Преимущества</a>
+        <a href="#" class="header-menu__link">Контакты</a>
+      </div>
+    </nav>
+
+    <button type="button" class="header-menu-btn" data-menu-btn>
+      <Sprite name="menu" />
+      <Sprite name="close" />
+    </button>
+
+    <a href="#" class="header-menu__link header__phone">+995 595 01 10 53</a>
+  </div>
+</header>

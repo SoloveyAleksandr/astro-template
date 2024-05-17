@@ -1,6 +1,7 @@
 import VenoBox from "venobox/dist/venobox";
 import { formValidateInit } from "./fv";
 import { initDropdownItems, initSelectInputs } from "./utils";
+import { menuHandler } from "@components/Header/Header";
 
 formValidateInit(".fv");
 initDropdownItems();
@@ -37,6 +38,24 @@ const vBox = new VenoBox(vboxOptions);
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
+
+  vBoxHandler(e, target);
+  menuHandler(target);
+});
+
+function openVBox(src: string, vbtype?: string) {
+  const link = document.createElement("a");
+  link.href = src;
+  link.dataset.vbtype = vbtype ? vbtype : "ajax";
+  (link as any).settings = vBox.settings;
+
+  vBox.close();
+  setTimeout(() => {
+    vBox.open(link);
+  }, 500);
+}
+
+function vBoxHandler(e: Event, target: HTMLElement) {
   const closePopup = target.closest("[data-vclose]");
   const vBoxLink = target.closest("[data-vbox]");
 
@@ -59,18 +78,6 @@ document.addEventListener("click", (e) => {
   if (closePopup) {
     vBox.close();
   }
-});
-
-function openVBox(src: string, vbtype?: string) {
-  const link = document.createElement("a");
-  link.href = src;
-  link.dataset.vbtype = vbtype ? vbtype : "ajax";
-  (link as any).settings = vBox.settings;
-
-  vBox.close();
-  setTimeout(() => {
-    vBox.open(link);
-  }, 500);
 }
 
 // {
