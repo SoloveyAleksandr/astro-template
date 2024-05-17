@@ -1,0 +1,179 @@
+.main-banner {
+  width: 100%;
+  aspect-ratio: 192 / 79.6;
+  position: relative;
+
+  @include breakpoint($xs-bp) {
+    aspect-ratio: none;
+    height: 31rem;
+  }
+
+  &[data-mode="light"] {
+    .main-banner {
+      &-bg {
+        &__item {
+          &:nth-child(2) {
+            filter: blur(0.4rem);
+            opacity: 0;
+          }
+        }
+      }
+
+      &-switch {
+        &__container {
+          background-color: #161a29;
+        }
+
+        &__joystick {
+          right: calc(100% - 0.3rem);
+          transform: translateX(100%);
+        }
+
+        &__icon {
+          &:nth-child(1) {
+            opacity: 0;
+          }
+
+          &:nth-child(2) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &__item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.8s;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    height: 100%;
+    padding-top: 2.8rem;
+    padding-bottom: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    @include breakpoint($xm-bp) {
+      padding-bottom: 5rem;
+    }
+  }
+
+  &-switch {
+    position: absolute;
+    top: 2.8rem;
+    left: 1.5rem;
+    cursor: pointer;
+
+    @include breakpoint($xm-bp) {
+    }
+
+    &__container {
+      width: 6rem;
+      height: 2.6rem;
+      border-radius: 10rem;
+      background-color: #fdf3be;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: 0.5s;
+    }
+
+    &__joystick {
+      position: absolute;
+      right: 0.3rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow:
+        0 0 0.4rem rgba(22, 26, 41, 0.3),
+        inset 0 0 0.2rem rgba(22, 26, 41, 0.5);
+      transition: 0.5s;
+    }
+
+    &__icon {
+      position: absolute;
+      width: 2.3rem;
+      height: 2.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.5s;
+
+      &:nth-child(1) {
+        top: 0.1rem;
+        left: 0.5rem;
+        color: #161a29;
+      }
+
+      &:nth-child(2) {
+        top: 0.1rem;
+        right: 0.5rem;
+        color: #fdf3be;
+        opacity: 0;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 5rem;
+
+    @include breakpoint($xm-bp) {
+      gap: 2.4rem;
+    }
+
+    &__link {
+      width: 7rem;
+      height: 7rem;
+      @include hover {
+        svg {
+          scale: 0.9;
+        }
+      }
+
+      @include breakpoint($xm-bp) {
+        width: 4rem;
+        height: 4rem;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+      }
+    }
+  }
+}

@@ -23,8 +23,10 @@ body._open-menu {
 
 .header {
   position: sticky;
+  z-index: 1000;
   top: 0;
   left: 0;
+  width: 100%;
   background-color: $bg;
   padding: 2.4rem 0rem;
 
@@ -70,8 +72,8 @@ body._open-menu {
       top: calc(100% - 0.1rem);
       right: 0;
       opacity: 0;
-      translate: 0 4rem;
-      transition: 0.3s;
+      translate: 0 2rem;
+      transition: 0.5s;
     }
 
     &-btn {
