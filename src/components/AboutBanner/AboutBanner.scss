@@ -1,0 +1,90 @@
+.about-banner {
+  background-color: $white;
+  padding: 6.5rem 0rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 41.7rem;
+
+  @include breakpoint($xm-bp) {
+    min-height: 20rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    min-height: 38.4rem;
+  }
+
+  &__bg {
+    object-fit: contain;
+    object-position: center;
+    width: 48.3rem;
+    height: 100%;
+    position: absolute;
+    left: 16rem;
+    top: 50%;
+    translate: 0 -50%;
+
+    @include breakpoint($xm-bp) {
+      left: 4rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      left: 50%;
+      translate: -50% -50%;
+      width: 27.2rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $black;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 9.6rem;
+    font-weight: 600;
+
+    @include breakpoint($xm-bp) {
+      zoom: 0.5;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: 3.6rem;
+      zoom: unset;
+    }
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 3.6rem;
+    font-weight: 300;
+
+    @include breakpoint($xm-bp) {
+      zoom: 0.5;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: 2.4rem;
+      zoom: unset;
+    }
+  }
+
+  &__desc {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 2.4rem;
+    font-weight: 300;
+
+    @include breakpoint($xm-bp) {
+      zoom: 0.5;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: 2rem;
+      zoom: unset;
+    }
+  }
+}
