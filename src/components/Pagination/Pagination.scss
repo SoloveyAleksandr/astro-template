@@ -1,49 +1,84 @@
 .pagination {
+  width: 100%;
+  max-width: 92.8rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 0 auto;
 
-  &__link {
-    flex: none;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 1.2rem;
-    border: 0.1rem solid $Primary-Light;
+  &__list {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 135%;
-    color: $Primary-Base;
-    transition: 0.3s;
+    gap: 0.2rem;
+  }
 
-    @include hover {
-      color: $white;
-      background-color: $Primary-Dark;
+  &__link {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &._active {
+      color: $red;
+      background-color: $white;
     }
 
-    &.active {
-      background-color: $Primary-Base;
-      color: $white;
-    }
+    &:is(a) {
+      transition: .3s;
 
-    &.pagination__btn {
-      border: none;
-
-      svg {
-        width: 2rem;
-        height: 2rem;
+      @include hover {
+        color: $red;
       }
     }
 
-    &.disabled {
-      color: $Primary-Tint;
-      pointer-events: none;
-      border-color: $Primary-Tint;
+    @include breakpoint($xs-bp) {
+      &:nth-child(3) {
+
+        &:not(:nth-last-child(1)),
+        &:not(:nth-last-child(2)),
+        &:not(:nth-last-child(3)),
+        &:not(:nth-last-child(4)) {
+          display: none;
+        }
+      }
+
+      &:nth-last-child(3) {
+
+        &:not(:nth-child(1)),
+        &:not(:nth-child(2)),
+        &:not(:nth-child(3)),
+        &:not(:nth-child(4)) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transition: .3s;
+
+    @include hover {
+      color: $red;
+    }
+
+
+    @include breakpoint($xs-bp) {
+      font-size: 0;
+      gap: 0rem;
+    }
+
+    svg {
+      flex: none;
+      width: 2.4rem;
+      height: 2.4rem;
     }
   }
 }

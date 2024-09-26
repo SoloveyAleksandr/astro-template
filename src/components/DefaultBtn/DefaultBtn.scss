@@ -1,68 +1,112 @@
 .default-btn {
-  padding: 1.5rem 2.3rem;
+  height: 5.6rem;
+  padding: 0 3.1rem;
+  border: 0.1rem solid $dark;
+  border-radius: 1.2rem;
+  background-color: $dark;
+  color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
-  border-radius: 10rem;
-  background-color: var(--Primary-Base, #0c5dff);
-  background-color: var(--Primary-Base, #0c5dff);
-  border: 0.1rem solid var(--Primary-Base, #0c5dff);
-  color: var(--Base-White, #fff);
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  transition: 0.3s;
+  gap: 1.6rem;
+  transition: .3s;
+
   @include hover {
-    background-color: var(--Primary-Dark, #0a4acc);
-    border-color: var(--Primary-Dark, #0a4acc);
+    background-color: $dark-hover;
+    border-color: $dark-hover;
   }
 
-  @include breakpoint($sm-bp) {
-    padding: 1.1rem 1.5rem;
-    font-size: 1.4rem;
+  &:active {
+    background-color: $dark-active;
+    border-color: $dark-active;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: $grey-disable;
+    border-color: $grey-disable;
+    color: $grey-placeholder;
   }
 
   svg {
-    width: 2rem;
-    height: 2rem;
-
-    @include breakpoint($sm-bp) {
-      width: 1.8rem;
-      height: 1.8rem;
-    }
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
-  &.sm {
-    padding: 1.1rem 1.5rem;
+  // sizes
+  &_sm {
+    height: 4rem;
+    padding: 0 1.5rem;
   }
 
-  &.white {
-    background-color: var(--Base-White, #fff);
-    border-color: var(--Base-White, #fff);
-    color: var(--Primary-Base, #0c5dff);
-
-    @include hover {
-      color: var(--Primary-Dark, #0a4acc);
-    }
-  }
-
-  &.stroke {
+  // variants
+  &_stroke {
     background-color: transparent;
-    color: var(--Primary-Base, #0c5dff);
+    color: $dark;
 
     @include hover {
-      color: var(--Primary-Dark, #0a4acc);
+      color: $white;
+    }
+  }
+
+  // colors
+  &_red {
+    background-color: $red;
+    border-color: $red;
+
+    @include hover() {
+      background-color: $red-hover;
+      border-color: $red-hover;
     }
 
-    &.white {
-      color: var(--Base-White, #fff);
+    &:active {
+      background-color: $red-active;
+      border-color: $red-active;
+    }
 
-      @include hover {
-        background: var(--Primary-Tint, #e6eeff);
-        border-color: var(--Primary-Tint, #e6eeff);
-        color: var(--Primary-Dark, #0a4acc);
+    &:disabled {
+      pointer-events: none;
+      background-color: $grey;
+      border-color: $grey;
+      color: $grey-placeholder;
+    }
+  }
+
+  &_white {
+    background-color: $white;
+    border-color: $white;
+    color: $dark;
+
+    @include hover() {
+      background-color: $grey;
+      border-color: $grey;
+    }
+
+    &:active {
+      background-color: $grey-disable;
+      border-color: $grey-disable;
+    }
+
+    &.default-btn_stroke {
+      background-color: transparent;
+      color: $white;
+
+      @include hover() {
+        background-color: $white;
+        border-color: $white;
+        color: $dark;
+      }
+
+      &:active {
+        background-color: $grey-disable;
+        border-color: $grey-disable;
+      }
+
+      &:disabled {
+        pointer-events: none;
+        background-color: $grey;
+        border-color: $grey;
+        color: $grey-placeholder;
       }
     }
   }

@@ -1,22 +1,41 @@
 .file-input {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  width: 100%;
+
+  &._files {
+    .file-input {
+      &__btn {
+        display: none;
+      }
+
+      &__list {
+        display: flex;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__desc {
+    padding-left: 0.4rem;
+  }
 
   &__btn {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 0.4rem 0rem;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    color: $Primary-Base;
+    justify-content: center;
+    gap: 1.6rem;
+    height: 5.6rem;
+    border: 0.1rem dashed 0.1rem $dark;
+    border-radius: 1.2rem;
     cursor: pointer;
     transition: 0.3s;
+
     @include hover {
-      color: $Primary-Dark;
+      border-style: solid;
     }
 
     svg {
@@ -24,46 +43,33 @@
       height: 2.4rem;
       flex: none;
     }
-
-    input {
-      display: none;
-    }
   }
 
   &__list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    display: none;
   }
 
   &-doc {
     width: 100%;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    padding: 0rem 3.2rem;
+    display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 1.2rem 1.6rem;
-    background-color: $Gray-100;
-    border-radius: 1.6rem;
-
-    &__icon {
-      flex: none;
-      width: 2.4rem;
-      height: 2.4rem;
-      color: $Primary-Base;
-    }
+    justify-content: center;
+    gap: 1.6rem;
+    height: 5.6rem;
+    border: 0.1rem solid $dark;
+    border-radius: 1.2rem;
+    transition: 0.3s;
 
     &__btn {
       flex: none;
       margin-left: auto;
-      width: 1.6rem;
-      height: 1.6rem;
-      color: $Gray-500;
+      width: 2.4rem;
+      height: 2.4rem;
       transition: 0.3s;
+
       @include hover {
-        color: $Base-Black;
+        opacity: 0.6;
       }
 
       svg {
@@ -74,17 +80,13 @@
 
     &__info {
       flex: 1;
-      max-width: 35rem;
       display: flex;
       align-items: baseline;
-      font-size: 1.6rem;
       overflow: hidden;
     }
 
     &__name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      @include lineClamp(1);
     }
 
     &__type {

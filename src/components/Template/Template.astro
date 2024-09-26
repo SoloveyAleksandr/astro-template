@@ -1,0 +1,794 @@
+---
+import { Sprite } from "astro-icon";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<div class:list={["template", className]}>
+  <section>
+    <div class="container template__text-container">
+      <div class="template__box">
+        <h1>Heading 1</h1>
+        <h3>
+          Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
+          odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis
+          mi bibendum diam. Tempor integer aliquam in vitae malesuada fringilla.
+        </h3>
+        <p class="text-big">
+          Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
+          suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis
+          montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere
+          vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien
+          varius id.
+        </p>
+      </div>
+      <div class="template__box">
+        <h1>Heading 2</h1>
+        <p>
+          Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat
+          mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis
+          fusce augue enim. Quis at habitant diam at. Suscipit tristique risus,
+          at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet
+          sodales id est ac volutpat.
+        </p>
+        <p>
+          Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat
+          mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis
+          fusce augue enim. Quis at habitant diam at. Suscipit tristique risus,
+          at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet
+          sodales id est ac volutpat.
+        </p>
+      </div>
+      <div class="template__box">
+        <h1>Heading 3</h1>
+        <p>
+          Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
+          scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
+          blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
+          scelerisque amet nulla purus habitasse.
+        </p>
+      </div>
+      <div class="template__box">
+        <h4>Heading 4</h4>
+        <p class="text-btn">
+          Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
+          scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
+          blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
+          scelerisque amet nulla purus habitasse.
+        </p>
+      </div>
+      <div class="template__box">
+        <h4>Heading 5</h4>
+        <p class="text-btn">
+          Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
+          scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
+          blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
+          scelerisque amet nulla purus habitasse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container template__text-container">
+      <div class="template-table">
+        <h3>Heading 3</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Heading 5</th>
+              <th>Heading 5</th>
+              <th>Heading 5</th>
+              <th>Heading 5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Full name</td>
+              <td>Company name</td>
+              <td>14</td>
+              <td>Team name</td>
+            </tr>
+            <tr>
+              <td>Full name</td>
+              <td>Company name</td>
+              <td>14</td>
+              <td>Team name</td>
+            </tr>
+            <tr>
+              <td>Full name</td>
+              <td>Company name</td>
+              <td>14</td>
+              <td>Team name</td>
+            </tr>
+            <tr>
+              <td>Full name</td>
+              <td>Company name</td>
+              <td>14</td>
+              <td>Team name</td>
+            </tr>
+            <tr>
+              <td>Full name</td>
+              <td>Company name</td>
+              <td>14</td>
+              <td>Team name</td>
+            </tr>
+            <tr>
+              <td>Full name</td>
+              <td>Company name</td>
+              <td>14</td>
+              <td>Team name</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="template-img">
+        <img src="./img/img.jpg" alt="" />
+        <div class="template-img__inner">
+          <p>Description</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container template__text-container">
+      <div class="template__box">
+        <div class="template__box">
+          <h3>
+            Heading 3. Dolor enim eu tortor urna sed duis nulla. Aliquam
+            vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean
+            hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in
+            vitae malesuada fringilla.
+          </h3>
+          <p>
+            Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
+            suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
+            quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris
+            posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At
+            feugiat sapien varius id.
+          </p>
+        </div>
+        <div class="template__box template__remark">
+          <h4>
+            Heading 4. Ipsum sit mattis nulla quam nulla. Gravida id gravida ac
+            enim mauris id. Non pellentesque congue eget consectetur turpis.
+            Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt
+            aenean tempus.
+          </h4>
+        </div>
+        <div class="template__box">
+          <p class="text-btn">
+            Tristique odio senectus nam posuere ornare leo metus, ultricies.
+            Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
+            Aliquam tellus lorem sed ac. Montes, sed mattis pellentesque
+            suscipit accumsan. Cursus viverra aenean magna risus elementum
+            faucibus molestie pellentesque. Arcu ultricies sed mauris
+            vestibulum.
+          </p>
+        </div>
+        <div class="template__box template__box_white">
+          <div class="template__box">
+            <h4>
+              Heading 4. Dolor enim eu tortor urna sed duis nulla. Aliquam
+              vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean
+              hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in
+              vitae malesuada fringilla.
+            </h4>
+            <p>
+              Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet
+              commodo consectetur convallis risus. Sed condimentum enim
+              dignissim adipiscing faucibus consequat, urna. Viverra purus et
+              erat auctor aliquam. Risus, volutpat vulputate posuere purus sit
+              congue convallis aliquet. Arcu id augue ut feugiat donec porttitor
+              neque. Mauris, neque ultricies eu vestibulum, bibendum quam lorem
+              id. Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
+            </p>
+          </div>
+          <div class="template__box">
+            <h5>Heading 5</h5>
+            <p class="c-black-low text-btn">Description text</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 картинки -->
+  <section>
+    <div class="container">
+      <div class="template__img-list">
+        <div class="template-img">
+          <img src="./img/img.jpg" alt="" />
+          <div class="template-img__inner">
+            <p>Description</p>
+          </div>
+        </div>
+        <div class="template-img">
+          <img src="./img/img.jpg" alt="" />
+          <div class="template-img__inner">
+            <p>Description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container template__text-container">
+      <div class="template__box">
+        <h3>Heading 3</h3>
+        <ol>
+          <li>
+            Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
+            scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
+            blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
+            scelerisque amet nulla purus habitasse.
+          </li>
+          <li>
+            Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas
+            condimentum mi massa. In tincidunt pharetra consectetur sed duis
+            facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit
+            dictum eget nibh tortor commodo cursus.
+          </li>
+          <li>
+            Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce
+            aliquet. Nam elementum urna nisi aliquet erat dolor enim. Ornare id
+            morbi eget ipsum. Aliquam senectus neque ut id eget consectetur
+            dictum. Donec posuere pharetra odio consequat scelerisque et, nunc
+            tortor. Nulla adipiscing erat a erat. Condimentum lorem posuere
+            gravida enim posuere cursus diam.
+          </li>
+        </ol>
+      </div>
+      <div class="template__box">
+        <h3>Heading 3</h3>
+        <ul>
+          <li>
+            Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
+            scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
+            blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
+            scelerisque amet nulla purus habitasse.
+          </li>
+          <li>
+            Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas
+            condimentum mi massa. In tincidunt pharetra consectetur sed duis
+            facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit
+            dictum eget nibh tortor commodo cursus.
+          </li>
+          <li>
+            Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce
+            aliquet. Nam elementum urna nisi aliquet erat dolor enim. Ornare id
+            morbi eget ipsum. Aliquam senectus neque ut id eget consectetur
+            dictum. Donec posuere pharetra odio consequat scelerisque et, nunc
+            tortor. Nulla adipiscing erat a erat. Condimentum lorem posuere
+            gravida enim posuere cursus diam.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- img + текст -->
+  <section>
+    <div class="container template__text-container">
+      <div class="template__list">
+        <div class="template-img">
+          <img src="./img/img.jpg" alt="" />
+        </div>
+        <div class="template__box template__box_white">
+          <h4>Heading 4</h4>
+          <p class="text-btn">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            varius enim in eros elementum tristique. Duis cursus, mi quis
+            viverra ornare, eros dolor interdum
+          </p>
+          <ul>
+            <li>
+              Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus
+              id scelerisque est ultricies ultricies.
+            </li>
+            <li>
+              Duis est sit sed leo nisl, blandit elit sagittis. Quisque
+              tristique consequat quam sed. Nisl at scelerisque amet nulla purus
+              habitasse.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section>
+    <div class="container template__text-container template__box">
+      <h3>Heading 3</h3>
+      <div class="about-mission__list">
+        <div class="about-mission-item" data-dropdown>
+          <button type="button" class="about-mission-item__btn" data-btn>
+            <span class="text-caps c-red about-mission-item__num">01</span>
+            <span class="title-4 about-mission-item__title">Для заказчиков</span
+            >
+            <span class="swiper-btn">
+              <Sprite name="chevron-down" />
+            </span>
+          </button>
+          <div class="about-mission-item__container">
+            <div class="about-mission-item__inner">
+              <div class="text-btn about-mission-item__text">
+                <p>
+                  Являемся надежным и честным поставщиком решений по цифровой
+                  трансформации и информационной безопасности. Предоставляем
+                  высший уровень сервиса и технологической экспертизы, развиваем
+                  долгосрочные отношения.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-mission-item" data-dropdown>
+          <button type="button" class="about-mission-item__btn" data-btn>
+            <span class="text-caps c-red about-mission-item__num">02</span>
+            <span class="title-4 about-mission-item__title">Для заказчиков</span
+            >
+            <span class="swiper-btn">
+              <Sprite name="chevron-down" />
+            </span>
+          </button>
+          <div class="about-mission-item__container">
+            <div class="about-mission-item__inner">
+              <div class="text-btn about-mission-item__text">
+                <p>
+                  Являемся надежным и честным поставщиком решений по цифровой
+                  трансформации и информационной безопасности. Предоставляем
+                  высший уровень сервиса и технологической экспертизы, развиваем
+                  долгосрочные отношения.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-mission-item" data-dropdown>
+          <button type="button" class="about-mission-item__btn" data-btn>
+            <span class="text-caps c-red about-mission-item__num">03</span>
+            <span class="title-4 about-mission-item__title">Для заказчиков</span
+            >
+            <span class="swiper-btn">
+              <Sprite name="chevron-down" />
+            </span>
+          </button>
+          <div class="about-mission-item__container">
+            <div class="about-mission-item__inner">
+              <div class="text-btn about-mission-item__text">
+                <p>
+                  Являемся надежным и честным поставщиком решений по цифровой
+                  трансформации и информационной безопасности. Предоставляем
+                  высший уровень сервиса и технологической экспертизы, развиваем
+                  долгосрочные отношения.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-mission-item" data-dropdown>
+          <button type="button" class="about-mission-item__btn" data-btn>
+            <span class="text-caps c-red about-mission-item__num">04</span>
+            <span class="title-4 about-mission-item__title">Для заказчиков</span
+            >
+            <span class="swiper-btn">
+              <Sprite name="chevron-down" />
+            </span>
+          </button>
+          <div class="about-mission-item__container">
+            <div class="about-mission-item__inner">
+              <div class="text-btn about-mission-item__text">
+                <p>
+                  Являемся надежным и честным поставщиком решений по цифровой
+                  трансформации и информационной безопасности. Предоставляем
+                  высший уровень сервиса и технологической экспертизы, развиваем
+                  долгосрочные отношения.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-mission-item" data-dropdown>
+          <button type="button" class="about-mission-item__btn" data-btn>
+            <span class="text-caps c-red about-mission-item__num">05</span>
+            <span class="title-4 about-mission-item__title">Для заказчиков</span
+            >
+            <span class="swiper-btn">
+              <Sprite name="chevron-down" />
+            </span>
+          </button>
+          <div class="about-mission-item__container">
+            <div class="about-mission-item__inner">
+              <div class="text-btn about-mission-item__text">
+                <p>
+                  Являемся надежным и честным поставщиком решений по цифровой
+                  трансформации и информационной безопасности. Предоставляем
+                  высший уровень сервиса и технологической экспертизы, развиваем
+                  долгосрочные отношения.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- video -->
+  <section>
+    <div class="container template__text-container">
+      <a
+        href="./popup/video.html"
+        class="template__video"
+        data-vbtype="ajax"
+        data-vbox
+        data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+      >
+        <Sprite name="play" />
+        <img src="./img/img.jpg" alt="" />
+      </a>
+    </div>
+  </section>
+
+  <!-- img + текст -->
+  <section>
+    <div class="container template__text-container">
+      <div class="template__list">
+        <div class="template__box template__box_white">
+          <h4>Heading 4</h4>
+          <p class="text-btn">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            varius enim in eros elementum tristique. Duis cursus, mi quis
+            viverra ornare, eros dolor interdum
+          </p>
+          <ul>
+            <li>
+              Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus
+              id scelerisque est ultricies ultricies.
+            </li>
+            <li>
+              Duis est sit sed leo nisl, blandit elit sagittis. Quisque
+              tristique consequat quam sed. Nisl at scelerisque amet nulla purus
+              habitasse.
+            </li>
+          </ul>
+        </div>
+        <div class="template-img">
+          <img src="./img/img.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="template-video-slider" data-swiper-init>
+    <div class="container section-pos-container">
+      <h2 class="template-video-slider__title">Heading 2</h2>
+      <div class="swiper-nav section-bottom">
+        <button type="button" class="swiper-btn" data-prev>
+          <Sprite name="chevron-left" />
+        </button>
+        <div class="swiper-scrollbar" data-scrollbar></div>
+        <button type="button" class="swiper-btn" data-next>
+          <Sprite name="chevron-right" />
+        </button>
+      </div>
+
+      <div
+        class="swiper section-content"
+        data-swiper
+        data-props={`{"spaceBetween":8,"slidesPerView":1,"breakpoints":{"789":{"slidesPerView":4},"601":{"slidesPerView": 2}}}`}
+      >
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a
+              href="./popup/video.html"
+              class="template__video"
+              data-vbtype="ajax"
+              data-vbox
+              data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+            >
+              <Sprite name="play" />
+              <img src="./img/img.jpg" alt="" />
+            </a>
+            <h5>Heading 5</h5>
+          </div>
+          <div class="swiper-slide">
+            <a
+              href="./popup/video.html"
+              class="template__video"
+              data-vbtype="ajax"
+              data-vbox
+              data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+            >
+              <Sprite name="play" />
+              <img src="./img/img.jpg" alt="" />
+            </a>
+            <h5>Heading 5</h5>
+          </div>
+          <div class="swiper-slide">
+            <a
+              href="./popup/video.html"
+              class="template__video"
+              data-vbtype="ajax"
+              data-vbox
+              data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+            >
+              <Sprite name="play" />
+              <img src="./img/img.jpg" alt="" />
+            </a>
+            <h5>Heading 5</h5>
+          </div>
+          <div class="swiper-slide">
+            <a
+              href="./popup/video.html"
+              class="template__video"
+              data-vbtype="ajax"
+              data-vbox
+              data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+            >
+              <Sprite name="play" />
+              <img src="./img/img.jpg" alt="" />
+            </a>
+            <h5>Heading 5</h5>
+          </div>
+          <div class="swiper-slide">
+            <a
+              href="./popup/video.html"
+              class="template__video"
+              data-vbtype="ajax"
+              data-vbox
+              data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+            >
+              <Sprite name="play" />
+              <img src="./img/img.jpg" alt="" />
+            </a>
+            <h5>Heading 5</h5>
+          </div>
+          <div class="swiper-slide">
+            <a
+              href="./popup/video.html"
+              class="template__video"
+              data-vbtype="ajax"
+              data-vbox
+              data-video="https://www.youtube.com/embed/IgTlLpqQS_c?si=8F-RQXUGfw6TJYGz"
+            >
+              <Sprite name="play" />
+              <img src="./img/img.jpg" alt="" />
+            </a>
+            <h5>Heading 5</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="template-video-slider" data-swiper-init>
+    <div class="container">
+      <h1 class="template-video-slider__title">Heading 1</h1>
+
+      <div
+        class="swiper"
+        data-swiper
+        data-props={`{"spaceBetween":8,"slidesPerView":1,"breakpoints":{"789":{"slidesPerView":4},"601":{"slidesPerView": 2}}}`}
+      >
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="template-img">
+              <img src="./img/img.jpg" alt="" />
+              <div class="template-img__inner">
+                <h4>Heading 4</h4>
+                <p class="c-black-low text-btn">Text</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="template-img">
+              <img src="./img/img.jpg" alt="" />
+              <div class="template-img__inner">
+                <h4>Heading 4</h4>
+                <p class="c-black-low text-btn">Text</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="template-img">
+              <img src="./img/img.jpg" alt="" />
+              <div class="template-img__inner">
+                <h4>Heading 4</h4>
+                <p class="c-black-low text-btn">Text</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="template-img">
+              <img src="./img/img.jpg" alt="" />
+              <div class="template-img__inner">
+                <h4>Heading 4</h4>
+                <p class="c-black-low text-btn">Text</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="template-img">
+              <img src="./img/img.jpg" alt="" />
+              <div class="template-img__inner">
+                <h4>Heading 4</h4>
+                <p class="c-black-low text-btn">Text</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="template-img">
+              <img src="./img/img.jpg" alt="" />
+              <div class="template-img__inner">
+                <h4>Heading 4</h4>
+                <p class="c-black-low text-btn">Text</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-nav section-bottom">
+        <button type="button" class="swiper-btn" data-prev>
+          <Sprite name="chevron-left" />
+        </button>
+        <div class="swiper-scrollbar" data-scrollbar></div>
+        <button type="button" class="swiper-btn" data-next>
+          <Sprite name="chevron-right" />
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="template-video-slider" data-swiper-init>
+    <div class="container section-pos-container">
+      <h2 class="template-video-slider__title">Heading 2</h2>
+      <div class="swiper-nav section-bottom">
+        <button type="button" class="swiper-btn" data-prev>
+          <Sprite name="chevron-left" />
+        </button>
+        <div class="swiper-scrollbar" data-scrollbar></div>
+        <button type="button" class="swiper-btn" data-next>
+          <Sprite name="chevron-right" />
+        </button>
+      </div>
+
+      <div
+        class="swiper section-content"
+        data-swiper
+        data-props={`{"spaceBetween":8,"slidesPerView":1,"breakpoints":{"789":{"slidesPerView":3},"601":{"slidesPerView": 2}}}`}
+      >
+        <div class="swiper-wrapper">
+          <a
+            href="#"
+            download="#"
+            class="swiper-slide main-banner-info-item docs-slider-item"
+          >
+            <div class="main-banner-info-item__img">
+              <span class="docs-slider-item__icon">
+                <Sprite name="download" />
+              </span>
+            </div>
+            <div class="main-banner-info-item__inner">
+              <h5 class="main-banner-info-item__title">
+                Корпоративная презентация
+              </h5>
+              <span class="text-caps main-banner-info-item__text">
+                PDF. 100 КБ
+              </span>
+            </div>
+          </a>
+          <a
+            href="#"
+            download="#"
+            class="swiper-slide main-banner-info-item docs-slider-item"
+          >
+            <div class="main-banner-info-item__img">
+              <span class="docs-slider-item__icon">
+                <Sprite name="download" />
+              </span>
+            </div>
+            <div class="main-banner-info-item__inner">
+              <h5 class="main-banner-info-item__title">
+                Корпоративная презентация
+              </h5>
+              <span class="text-caps main-banner-info-item__text">
+                PDF. 100 КБ
+              </span>
+            </div>
+          </a>
+          <a
+            href="#"
+            download="#"
+            class="swiper-slide main-banner-info-item docs-slider-item"
+          >
+            <div class="main-banner-info-item__img">
+              <span class="docs-slider-item__icon">
+                <Sprite name="download" />
+              </span>
+            </div>
+            <div class="main-banner-info-item__inner">
+              <h5 class="main-banner-info-item__title">
+                Корпоративная презентация
+              </h5>
+              <span class="text-caps main-banner-info-item__text">
+                PDF. 100 КБ
+              </span>
+            </div>
+          </a>
+          <a
+            href="#"
+            download="#"
+            class="swiper-slide main-banner-info-item docs-slider-item"
+          >
+            <div class="main-banner-info-item__img">
+              <span class="docs-slider-item__icon">
+                <Sprite name="download" />
+              </span>
+            </div>
+            <div class="main-banner-info-item__inner">
+              <h5 class="main-banner-info-item__title">
+                Корпоративная презентация
+              </h5>
+              <span class="text-caps main-banner-info-item__text">
+                PDF. 100 КБ
+              </span>
+            </div>
+          </a>
+          <a
+            href="#"
+            download="#"
+            class="swiper-slide main-banner-info-item docs-slider-item"
+          >
+            <div class="main-banner-info-item__img">
+              <span class="docs-slider-item__icon">
+                <Sprite name="download" />
+              </span>
+            </div>
+            <div class="main-banner-info-item__inner">
+              <h5 class="main-banner-info-item__title">
+                Корпоративная презентация
+              </h5>
+              <span class="text-caps main-banner-info-item__text">
+                PDF. 100 КБ
+              </span>
+            </div>
+          </a>
+          <a
+            href="#"
+            download="#"
+            class="swiper-slide main-banner-info-item docs-slider-item"
+          >
+            <div class="main-banner-info-item__img">
+              <span class="docs-slider-item__icon">
+                <Sprite name="download" />
+              </span>
+            </div>
+            <div class="main-banner-info-item__inner">
+              <h5 class="main-banner-info-item__title">
+                Корпоративная презентация
+              </h5>
+              <span class="text-caps main-banner-info-item__text">
+                PDF. 100 КБ
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

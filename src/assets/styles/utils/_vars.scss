@@ -1,8 +1,44 @@
 $xl-bp: 1920px;
-$xm-bp: 1024px;
+$xm-bp: 1440px;
+$sm-bp: 768px;
 $xs-bp: 600px;
 
 // colors
-$bg: #4e515e;
-$white: #ffffff;
+$white: #FFFFFF;
 $black: #000000;
+
+$dark: #40454E;
+$dark-hover: #494F59;
+$dark-active: #3D414A;
+
+$black-low: #AAB8C3;
+
+$grey: #F0F2F6;
+$grey-border: #D2DCE5;
+$grey-placeholder: #AAB8C3;
+
+$grey-disable: #E5E9F1;
+
+$red: #A50F2D;
+$red-hover: #D20B33;
+$red-active: #940D28;
+
+$green :#21725E;
+$orange: #C38D25;
+
+$gradient: #9DA7B7 0%,
+  #9DA7B7 7%,
+  #9EA8B8 13%,
+  #9FA9B9 20%,
+  #A1ABBB 27%,
+  #A3ADBE 33%,
+  #A6B0C1 40%,
+  #A9B3C4 47%,
+  #ACB7C7 53%,
+  #AFBACA 60%,
+  #B2BDCD 67%,
+  #B4BFD0 73%,
+  #B6C1D2 80%,
+  #B7C2D3 87%,
+  #B8C3D4 93%,
+  #B8C3D4 100%;

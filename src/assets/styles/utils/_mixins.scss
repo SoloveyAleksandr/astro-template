@@ -10,29 +10,121 @@
       @content;
     }
   }
-}
 
-@mixin text {
-  & >,
-  * > {
-    * {
-      font-size: inherit;
-      line-height: inherit;
-      font-family: inherit;
-      color: inherit;
-
-      :not(strong) {
-        font-weight: inherit;
-      }
-    }
-
-    font-size: inherit;
-    line-height: inherit;
-    font-family: inherit;
-    color: inherit;
-
-    :not(strong) {
-      font-weight: inherit;
+  @media (hover: none) {
+    &:active {
+      @content;
     }
   }
+}
+
+@mixin img() {
+
+  img,
+  picture,
+  video {
+    @content;
+  }
+}
+
+@mixin lineClamp($count) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $count;
+  line-clamp: $count;
+  -webkit-box-orient: vertical;
+}
+
+@mixin text-btn {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+@mixin text-medium {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+@mixin text-big {
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+@mixin title-1 {
+  font-size: 6.4rem;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  font-family: "Nekst";
+
+  @include breakpoint($sm-bp) {
+    font-size: 4.6rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    font-size: 3.4rem;
+  }
+}
+
+@mixin title-2 {
+  font-size: 4.8rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-family: "Nekst";
+
+  @include breakpoint($sm-bp) {
+    font-size: 3.8rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    font-size: 2.6rem;
+    letter-spacing: -0.04em;
+  }
+}
+
+@mixin title-3 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-family: "Nekst";
+
+  @include breakpoint($sm-bp) {
+    font-size: 2.6rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    font-size: 2.2rem;
+  }
+}
+
+@mixin title-4 {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-family: "Nekst";
+
+  @include breakpoint($sm-bp) {
+    font-size: 2rem;
+    letter-spacing: -0.04em;
+  }
+}
+
+@mixin title-5 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: "Nekst";
+
+  @include breakpoint($sm-bp) {
+    font-size: 1.6rem;
+    letter-spacing: -0.04em;
+  }
+}
+
+@mixin title-6 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-family: "Nekst";
 }

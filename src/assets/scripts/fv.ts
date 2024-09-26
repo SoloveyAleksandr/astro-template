@@ -258,13 +258,8 @@ export const formValidateInit = (wrapperSelector: string) => {
                   vlaidList.push(checkNodeValidity(item));
                 });
 
-                if (!vlaidList.includes(false)) {
-                  // const sendHandlerContainer =
-                  //   closestForm.closest<HTMLElement>(sendHandler);
-                  // if (sendHandlerContainer) {
-                  //   closestForm.onsubmit = (e) => e.preventDefault();
-                  //   sendHandlerContainer.classList.add("_sended");
-                  // }
+                if (vlaidList.includes(false)) {
+                  e.preventDefault();
                 }
               }
             }

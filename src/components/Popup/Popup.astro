@@ -1,0 +1,47 @@
+---
+import { Sprite } from "astro-icon";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  close?: boolean;
+  inline?: boolean;
+  className?: string;
+}
+
+const { inline, close = true, className, ...rest } = Astro.props;
+---
+
+<div class="popup" class:list={[{ popup_inline: inline }, className]} {...rest}>
+  {inline && <div class="popup__bg" data-close-popup />}
+
+  {
+    inline ? (
+      <div class="popup__container">
+        {close && (
+          <button
+            type="button"
+            class="hover-color popup__close"
+            data-close-popup
+            data-vclose
+          >
+            <Sprite name="close" />
+          </button>
+        )}
+        <slot />
+      </div>
+    ) : (
+      <>
+        {close && (
+          <button
+            type="button"
+            class="hover-color popup__close"
+            data-close-popup
+            data-vclose
+          >
+            <Sprite name="close" />
+          </button>
+        )}
+        <slot />
+      </>
+    )
+  }
+</div>

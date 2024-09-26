@@ -6,17 +6,22 @@
 
 @import "swiper/scss";
 @import "venobox/dist/venobox.css";
+@import "plyr/dist/plyr.css";
 
 html {
   box-sizing: border-box;
   font-size: 10px;
 
-  @include breakpoint($xl-bp) {
-    font-size: calc(100vw / 1920 * 10);
-  }
+  // @include breakpoint($xl-bp) {
+  // font-size: calc(100vw / 1920 * 10);
+  // }
 
   @include breakpoint($xm-bp) {
-    font-size: calc(100vw / 1024 * 10);
+    font-size: calc(100vw / 1440 * 10);
+  }
+
+  @include breakpoint($sm-bp) {
+    font-size: calc(100vw / 768 * 10);
   }
 
   @include breakpoint($xs-bp) {
@@ -26,5 +31,4 @@ html {
 
 @import "./general";
 @import "./components";
-@import "./modules";
 @import "./pages";

@@ -1,0 +1,391 @@
+// Текст
+.template {
+
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  ul {
+    @include text-btn();
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8em;
+
+    li {
+      position: relative;
+      padding-left: 1.5em;
+
+      &::before {
+        flex: none;
+        content: "";
+        background-color: $red;
+        position: absolute;
+        top: 0.5em;
+        left: 0.5em;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 0;
+      }
+    }
+  }
+
+  ol {
+    @include text-btn();
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    counter-reset: counter;
+    list-style-type: none;
+
+    li {
+      position: relative;
+      padding-left: 1.5em;
+      counter-increment: counter;
+
+      &::before {
+        content: counter(counter) ".";
+        flex: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        counter-increment: section;
+        @include title-5();
+        color: $red;
+      }
+    }
+  }
+}
+
+// margin
+.template section {
+  margin: 12rem 0rem;
+
+  @include breakpoint($sm-bp) {
+    margin: 8rem 0rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    margin: 6.4rem 0rem;
+  }
+
+  &:last-child {
+    margin-bottom: 16rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 9.6rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      margin-bottom: 8rem;
+    }
+  }
+}
+
+.template__text-container {
+  @media screen and (min-width: 769px) {
+    padding: 0rem 25.7rem;
+  }
+}
+
+.template__box {
+  &:not(:last-child) {
+    margin-bottom: 6.4rem;
+
+    @include breakpoint($sm-bp) {
+      margin-bottom: 4.8rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .template__box {
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+
+      @include breakpoint($xs-bp) {
+        margin-bottom: 3.2rem;
+      }
+    }
+  }
+
+  &>h1,
+  &>h2,
+  &>h3 {
+    &:not(:last-child) {
+      margin-bottom: 2.4rem;
+
+      @include breakpoint($xs-bp) {
+        margin-bottom: 1.6rem;
+      }
+    }
+  }
+
+  &>p,
+  &>h4,
+  &>h5,
+  &>h6 {
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  &>h5,
+  &>h6 {
+    &:not(:last-child) {
+      @include breakpoint($xs-bp) {
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+}
+
+.template__box_white {
+  padding: 2.4rem;
+  border-radius: 1.6rem;
+  background-color: $white;
+
+  @include breakpoint($xs-bp) {
+    padding: 2.4rem 1.6rem;
+  }
+}
+
+.template__remark {
+  padding: 0rem 2.4rem 0rem 2.2rem;
+  border-left: 0.2rem solid $red;
+
+  @include breakpoint($xs-bp) {
+    padding: 0rem 0rem 0rem 2.2rem;
+  }
+}
+
+// table
+.template-table {
+  table {
+    width: 100%;
+    margin-top: 3.2rem;
+    text-align: left;
+
+    @include breakpoint($sm-bp) {
+      margin-top: 2.4rem;
+    }
+
+    th,
+    td {
+      padding: 2.4rem 1.6rem;
+    }
+
+    thead {
+      @include title-5();
+      border-bottom: 0.1rem solid $dark;
+    }
+
+    tbody {
+      @include text-btn();
+
+      tr {
+        &:nth-child(2n + 2) {
+          background-color: #E5E9F1;
+        }
+      }
+    }
+  }
+}
+
+.template-img {
+  @include img() {
+    width: 100%;
+    height: 50rem;
+    border-radius: 1.6rem;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+
+    @include breakpoint($sm-bp) {
+      height: 40rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      height: 36rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  &__inner {
+    padding-left: 1.6rem;
+
+    @include breakpoint($sm-bp) {
+      padding-left: 0.8rem;
+    }
+  }
+}
+
+.template__img-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+
+  @include breakpoint($xs-bp) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .template-img {
+    img {
+      height: 40rem;
+
+      @include breakpoint($sm-bp) {
+        height: 36.4rem;
+      }
+
+      @include breakpoint($xs-bp) {
+        height: 36rem;
+      }
+    }
+  }
+}
+
+.template__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+
+  @include breakpoint($sm-bp) {
+    grid-template-columns: 1fr;
+  }
+
+  .template__box {
+    margin: 0;
+  }
+
+  .template-img {
+    img {
+      height: 100%;
+      min-height: 45rem;
+
+      @include breakpoint($sm-bp) {
+        height: 40rem;
+        min-height: unset;
+      }
+    }
+  }
+}
+
+.template .about-mission__list {
+  &:not(:first-child) {
+    margin-top: 4rem;
+  }
+}
+
+.template__video {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52rem;
+  border-radius: 1.6rem;
+  overflow: hidden;
+
+  @include hover {
+    svg {
+      scale: 1.1;
+    }
+  }
+
+  @include breakpoint($sm-bp) {
+    height: 43rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    height: 20rem;
+  }
+
+  svg {
+    position: absolute;
+    width: 5.6rem;
+    height: 5.6rem;
+    color: $white;
+    transition: .3s;
+
+    @include breakpoint($xs-bp) {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  @include img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.template-video-slider {
+  &__title {
+    @include breakpoint($xs-bp) {
+      text-align: center;
+    }
+  }
+
+  .container {
+    gap: 6.4rem;
+
+    @include breakpoint($sm-bp) {
+      gap: 4.8rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      gap: 4rem;
+    }
+  }
+
+  .template__video {
+    margin-bottom: 0.8rem;
+    height: 19.2rem;
+
+    @include breakpoint($sm-bp) {
+      height: 20rem;
+    }
+
+    svg {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .container:not(.section-pos-container) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .template-img {
+    @include img() {
+      height: unset;
+      aspect-ratio: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    &__inner {
+      padding-left: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+}

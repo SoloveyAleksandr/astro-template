@@ -18,21 +18,17 @@ const { title = "заголовок страницы" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-      rel="stylesheet"
-    />
-
     <title>{title}</title>
+
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=de8b84da-ef52-4fe3-a58b-64374e973f5a"
+      type="text/javascript"></script>
   </head>
   <body>
     <Sprite.Provider>
-      <div class="page">
+      <main class="page">
         <slot />
-      </div>
+      </main>
     </Sprite.Provider>
   </body>
 </html>

@@ -1,12 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  line-height: normal;
-  font-size: 2rem;
-  font-weight: 400;
-  color: $white;
-  background-color: $bg;
+  font-family: "Manrope";
+  font-size: 4rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: rgb(87, 69, 69);
+  background-color: #e7ffc3;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 a,
@@ -21,8 +32,10 @@ textarea {
   font-size: inherit;
   line-height: inherit;
   font-family: inherit;
+  font-weight: inherit;
   color: inherit;
   text-decoration: none;
+  border-radius: 0;
 }
 
 .page {
@@ -33,8 +46,27 @@ textarea {
 }
 
 .container {
-  max-width: 147rem;
   width: 100%;
+  max-width: 144.4rem;
   margin: 0 auto;
-  padding: 0rem 1.5rem;
+  padding: 0rem 2.4rem;
+
+  @include breakpoint($sm-bp) {
+    padding: 0rem 1.6rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    padding: 0rem 0.8rem;
+  }
 }
+
+.lazy:not(.loaded) {
+  filter: blur(0.4rem);
+}
+
+// <-- SWIPER
+.swiper {
+  width: 100%;
+}
+
+// -->

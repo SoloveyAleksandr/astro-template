@@ -1,22 +1,35 @@
 ---
-interface Props {
-  as?: astroHTML.JSX.IntrinsicElements;
-  theme?: "stroke";
+// @ts-nocheck
+import type { IUIButtonAttributes, IUIVariableComponent } from "src/interface";
+
+interface Props
+  extends IUIButtonAttributes,
+    IUIVariableComponent,
+    astroHTML.JSX.ButtonHTMLAttributes {
+  variant?: "stroke";
   size?: "sm";
-  color?: "white";
-  className?: string;
+  color?: "red" | "white";
 }
 
 const {
-  as: Wrapper = "button",
-  theme,
+  component: Wrapper = "button",
+  variant,
   size,
   color,
-  className,
-  ...rest
+  ...props
 } = Astro.props;
 ---
 
-<Wrapper {...rest} class:list={["default-btn", theme, size, color, className]}>
+<Wrapper
+  class="text-btn default-btn"
+  class:list={[
+    {
+      ["default-btn_" + color]: color,
+      ["default-btn_" + variant]: variant,
+      ["default-btn_" + size]: size,
+    },
+  ]}
+  {...props}
+>
   <slot />
 </Wrapper>
