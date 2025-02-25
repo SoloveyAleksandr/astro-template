@@ -3,24 +3,24 @@ import { Dropdown } from "./dropdown";
 export class Select extends Dropdown {
   items: NodeListOf<HTMLElement>;
   btnText: HTMLElement | null;
-  changeEvent = new Event("change", { bubbles: true });
-  input: HTMLInputElement;
+  // changeEvent = new Event("change", { bubbles: true });
+  // input: HTMLInputElement;
 
   constructor(container: HTMLElement) {
     super(container);
     this.btnText = this.container.querySelector<HTMLElement>("[data-btn-text]");
     this.items = this.container.querySelectorAll<HTMLElement>("[data-item]");
 
-    const input =
-      this.container.querySelector<HTMLInputElement>("[data-input]");
-    if (input) {
-      this.input = input;
-    } else {
-      const input = document.createElement("input");
-      input.type = "text";
-      input.hidden = true;
-      this.input = input;
-    }
+    // const input =
+    //   this.container.querySelector<HTMLInputElement>("[data-input]");
+    // if (input) {
+    //   this.input = input;
+    // } else {
+    //   const input = document.createElement("input");
+    //   input.type = "text";
+    //   input.hidden = true;
+    //   this.input = input;
+    // }
 
     this.btn && this.btn.classList.add("_placeholder");
 
@@ -53,8 +53,8 @@ export class Select extends Dropdown {
           this.btnText.textContent = text;
           this.btn.classList.remove("_placeholder");
         }
-        this.input.value = input.value;
-        this.input.dispatchEvent(this.changeEvent);
+        // this.input.value = input.value;
+        // this.input.dispatchEvent(this.changeEvent);
       } else {
         el.classList.remove("_selected");
       }

@@ -33,13 +33,10 @@ export class Popup {
 }
 
 export class PopupController {
-  readonly popupMap: {
-    [key: string]: Popup;
-  };
+  popupMap: Map<string, Popup> = new Map();
   private currentOpen: null | Popup;
 
   constructor() {
-    this.popupMap = {};
     this.currentOpen = null;
 
     const popupList = document.querySelectorAll<HTMLElement>("[data-popup]");
@@ -47,17 +44,8 @@ export class PopupController {
       const key = container.getAttribute("data-popup");
 
       if (key) {
-        this.popupMap[key] = new Popup(container, key, this);
+        this.popupMap.set(key, new Popup(container, key, this));
       }
-    });
-
-    const openBtns =
-      document.querySelectorAll<HTMLElement>("[data-open-popup]");
-
-    openBtns.forEach((btn) => {
-      const key = btn.getAttribute("data-open-popup");
-
-      key && btn.addEventListener("click", this.open.bind(this, key));
     });
   }
 
@@ -74,19 +62,30 @@ export class PopupController {
     }
 
     if (open) {
-      const key = open.getAttribute("data-open-popup");
+      const keyAttr = open.getAttribute("data-open-popup");
 
-      key && this.open(key);
+      if (keyAttr) {
+        this.open(keyAttr);
+        return;
+      }
+
+      const keyHref = open.getAttribute("href");
+      if (keyHref) {
+        this.open(keyHref);
+        return;
+      }
     }
   }
 
   open(key: string) {
     this.currentOpen && this.currentOpen.close();
 
-    if (this.popupMap[key]) {
+    const popup = this.popupMap.get(key);
+
+    if (popup) {
       document.body.classList.add("_hidden");
-      this.popupMap[key].open();
-      this.currentOpen = this.popupMap[key];
+      popup.open();
+      this.currentOpen = popup;
     } else {
       throw new Error(
         "Проверьте правильность ключа и/или наличие popup на странице",
@@ -96,7 +95,9 @@ export class PopupController {
 
   close(key: string) {
     document.body.classList.remove("_hidden");
-    this.popupMap[key] && this.popupMap[key].close();
+    const popup = this.popupMap.get(key);
+
+    popup && popup.close();
     this.currentOpen && this.currentOpen.close();
     this.currentOpen = null;
   }

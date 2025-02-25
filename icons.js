@@ -14,7 +14,11 @@ async function getIcons() {
 
       files.forEach((i) => {
         const nameArr = i.split(".svg");
-        if (nameArr[0] && !nameArr[0].includes(".DS_Store")) {
+        if (
+          nameArr[0] &&
+          !nameArr[0].includes(".DS_Store") &&
+          !nameArr[0].includes(".gitkeep")
+        ) {
           result.push(nameArr[0]);
         }
       });
